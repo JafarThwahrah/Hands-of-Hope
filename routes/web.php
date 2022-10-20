@@ -20,3 +20,6 @@ Route::get('/', function () {
 
 
 Route::get('/profile' , [UserController::class, 'showuserpage']);
+Route::get('/Contact', function () {
+    return view('Contact');
+});
