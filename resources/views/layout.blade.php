@@ -109,7 +109,7 @@
         </div>
     </div>
     <!-- Navbar End -->
-
+    @yield('content')
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-light mt-5 py-5">
         <div class="container py-5">
