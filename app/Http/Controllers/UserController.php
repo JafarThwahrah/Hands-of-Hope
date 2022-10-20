@@ -13,7 +13,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+
+    }
+
+    public function showuserpage()
+    {
+        return view('profile');
+
     }
 
     /**
@@ -45,7 +51,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
