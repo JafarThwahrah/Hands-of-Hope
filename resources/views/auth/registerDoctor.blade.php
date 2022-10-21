@@ -11,7 +11,7 @@
             </a>
         </x-slot>
 
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('storeDoc') }}" enctype="multipart/form-data">
             @csrf
 
             <!-- Name -->
@@ -31,6 +31,47 @@
 
                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
             </div>
+
+
+
+
+
+
+
+            <div class="mt-4">
+                <x-input-label for="image" :value="__('image')" />
+
+                <x-text-input id="image" class="block mt-1 w-full" type="file" name="image" :value="old('image')" required />
+
+                <x-input-error :messages="$errors->get('image')" class="mt-2" />
+            </div>
+
+
+
+            
+            <div class="mt-4">
+                <x-input-label for="certificate" :value="__('certificate')" />
+
+                <x-text-input id="certificate" class="block mt-1 w-full" type="file" name="certificate" :value="old('certificate')" required />
+
+                <x-input-error :messages="$errors->get('certificate')" class="mt-2" />
+            </div>
+
+
+            
+            <div class="mt-4">
+                <x-input-label for="available_time" :value="__('available_time')" />
+
+                <x-text-input id="available_time" class="block mt-1 w-full" type="date" name="available_time" :value="old('available_time')" required />
+
+                <x-input-error :messages="$errors->get('available_time')" class="mt-2" />
+            </div>
+
+
+
+
+            
+
 
             <!-- Password -->
             <div class="mt-4">
