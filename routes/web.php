@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DoctorController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +19,22 @@ use App\Http\Controllers\UserController;
 Route::get('/', function () {
     return view('welcome');
 });
+//testimonial routes
+Route::get('/userprofile/testimonial' , [UserController::class, 'testimonial'])->name('testimonial');
+Route::post('/userprofile/testimonial/post' , [UserController::class, 'testimonialpost'])->name('testimonialpost');
 
 
-Route::get('/profile' , [UserController::class, 'showuserpage']);
+//user profile routes
+Route::get('/userprofile/{id}' , [UserController::class, 'showuserpage']);
+Route::get('/userprofile/edit/{id}' , [UserController::class, 'edituserinfo'])->name('editProfile');
+Route::put('/userprofile/edit/update/{id}' , [UserController::class, 'updateuserinfo'])->name('updateProfile');
+
+
+//Doctor Profile routes
+Route::get('/doctorprofile/{id}' , [DoctorController::class, 'showdoctorpage']);
+Route::get('/doctorprofile/edit/{id}' , [DoctorController::class, 'editdoctorinfo'])->name('editDocProfile');
+Route::put('/doctorprofile/edit/update/{id}' , [DoctorController::class, 'updateDoctorProfile'])->name('updateDoctorProfile');
+
 Route::get('/Contact', function () {
     return view('Contact');
 });
