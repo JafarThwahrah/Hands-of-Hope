@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\doctor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DoctorController extends Controller
 {
@@ -14,6 +16,40 @@ class DoctorController extends Controller
     public function index()
     {
         //
+    }
+
+
+    public function showdoctorpage($id)
+    {
+        $doctor = doctor::where('id', $id)->get();
+        // dd($doctor);
+        $appointmentsAndusers = DB::table('appointment')->join('users', 'appointment.user_id', '=', 'users.id')->where('appointment.doctor_id' , $id)->get();
+
+        return view('doctorpage' , ['id' => $id , 'doctor' => $doctor , 'appointmentsAndusers' => $appointmentsAndusers]);
+    }
+
+    public function editdoctorinfo($id){
+        $doctor = doctor::where('id', $id)->get();
+        return view('editDocProfile' ,['id' => $id , 'doctor'=>$doctor]);
+    }
+
+    public function updateDoctorProfile(Request $request, $id){
+
+        $request->validate([
+            'name' => '',
+            'email' => '',
+            'password' => '',
+            
+        ]);
+
+        
+
+        doctor::where('id', $id)->update(['name' => request('Name'), 'email' => request('Email'), 'password' => request('Password'), 'available_time' => request('Available'), 'image' => request('Personal'), 'certificate' => request('Certificate') ]);
+
+        return redirect("/doctorprofile/$id")->with('mssg', 'Personal information updated successfully');
+    
+
+
     }
 
     /**
