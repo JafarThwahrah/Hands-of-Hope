@@ -20,24 +20,31 @@
 
 <body>
 <!-- Side-Nav -->
-<div class="side-navbar active-nav d-flex justify-content-between flex-wrap flex-column" id="sidebar">
+<div class="side-navbar active-nav d-flex justify-content-between flex-wrap flex-column" id="sidebar" style="background: #13C5DD; ">
     <ul class="nav flex-column text-white w-100">
         <a href="#" class="nav-link h3 text-white my-2">
-            Hope Admin Dashboard
+            <span style="color:#1D2A4D;">Hope Admin Dashboard</span>
         </a>
-        <li href="#" class="nav-link">
-            <i href="/overview" class="bx bxs-dashboard"></i>
-            <span class="mx-2">Overview</span>
-        </li>
-        <li href="#" class="nav-link">
-            <i class="bx bx-user-check"></i>
-            <span class="mx-2">All Users</span>
-        </li>
-        <li href="#" class="nav-link">
-            <i class="bx bx-conversation"></i>
-            <span class="mx-2">All Doctors</span>
-        </li>
+        <a href="/admin" class="nav-link">
+            <i class="bx bxs-dashboard" style="color:#1D2A4D;"></i>
+            <span class="mx-2" style="color:#1D2A4D;">Overview</span>
+        </a>
+        <a href="/admin/allUsers" class="nav-link">
+            <i class="bx bx-user-check" style="color:#1D2A4D;"></i>
+            <span class="mx-2" style="color:#1D2A4D;">All Users</span>
+        </a>
+
+        <a href="/admin/allDoctor" class="nav-link">
+            <i class="bx bx-conversation" style="color:#1D2A4D;"></i>
+            <span class="mx-2" style="color:#1D2A4D;">All Doctors</span>
+        </a>
+        <a href="/admin/allProduct" class="nav-link">
+            <i class="bx bxl-product-hunt" style="color:#1D2A4D;"></i>
+            <span class="mx-2" style="color:#1D2A4D;">All Product</span>
+        </a>
     </ul>
+
+
 
     <span href="#" class="nav-link h4 w-100 mb-5">
       <a href=""><i class="bx bxl-instagram-alt text-white"></i></a>
@@ -52,7 +59,7 @@
     <nav class="navbar top-navbar navbar-light bg-light px-5">
         <a class="btn border-0" id="menu-btn"><i class="bx bx-menu"></i></a>
     </nav>
-    @yield('overView')
+    @yield('content')
 </div>
 
 

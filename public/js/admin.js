@@ -6,7 +6,8 @@ menu_btn.addEventListener("click", () => {
     container.classList.toggle("active-cont");
 });
 
-function deleteUser(id) {
+function deleteUser(e,id) {
+    console.log(e);
     Swal.fire({
         title: 'Are you sure?',
         text: "You won't be able to revert this!",
@@ -17,7 +18,34 @@ function deleteUser(id) {
         confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
         if (result.isConfirmed) {
-            fetch(`http://127.0.0.1:8000/admin/delete/${id}`).then(res=>res.json()).then(ress=>console.log(ress))
+            fetch(`http://127.0.0.1:8000/admin/delete/${id}`)
+                .then(res=>res.json())
+                .then(ress=>console.log(ress))
+            e.parentElement.parentElement.parentElement.remove()
+            Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+            )
+        }
+    })
+}
+
+function deleteDoctor(e,id) {
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            fetch(`http://127.0.0.1:8000/admin/deleteDoctor/${id}`)
+                .then(res=>res.json())
+                .then(ress=>console.log(ress))
+            e.parentElement.parentElement.parentElement.remove()
             Swal.fire(
                 'Deleted!',
                 'Your file has been deleted.',
