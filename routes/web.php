@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,12 +17,28 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/about', function () {
+    return view('about');
+});
+
+
+Route::get('/profile' , [UserController::class, 'showuserpage']);
 Route::get('/Contact', function () {
     return view('Contact');
 });
+
 Route::get('/index', function () {
     return view('Home.index');
 });
 Route::get('/appointment', function () {
     return  view('appointment');
 });
+
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+require __DIR__.'/auth.php';
+
