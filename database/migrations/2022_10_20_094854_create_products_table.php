@@ -17,8 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->binary('image');
-            $table->string('category');
-            $table->integer('quantity');
             $table->text('description');
             $table->timestamps();
         });
