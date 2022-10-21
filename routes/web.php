@@ -22,3 +22,6 @@ Route::get('/Contact', function () {
 Route::get('/index', function () {
     return view('Home.index');
 });
+Route::get('/appointment', function () {
+    return  view('Home.appointment');
+});  //
