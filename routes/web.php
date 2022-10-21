@@ -19,17 +19,30 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/about', function () {
+    return view('about');
+});
+
 
 Route::get('/profile' , [UserController::class, 'showuserpage']);
 Route::get('/Contact', function () {
     return view('Contact');
 });
 
+Route::get('/index', function () {
+    return view('Home.index');
+});
+Route::get('/appointment', function () {
+    return  view('appointment');
+});
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
 
 Route::get('/admin',[AdminController::class,'index']);
 Route::get('/admin/editUser/{id}',[AdminController::class,'editUser']);
@@ -48,3 +61,4 @@ Route::get('/admin/allDoctor',[AdminController::class,'allDoctor']);
 Route::get('/admin/allUsers',[AdminController::class,'allUsers']);
 Route::get('/admin/allProduct',[AdminController::class,'allProduct']);
 Route::post('/admin/addProduct',[AdminController::class,'addProduct']);
+
