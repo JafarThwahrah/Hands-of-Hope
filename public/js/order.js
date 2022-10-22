@@ -15,22 +15,28 @@ let product_id=document.getElementById("product_id").value;
 
     Swal.fire({
         title: 'Are you sure?',
-        text: "You won't be able to revert this!",
+        text: "You won't be able to edit this!",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
+        confirmButtonText: 'Yes, Approve it!'
+
+        
     }).then((result) => {
         if (result.isConfirmed) {
             fetch(`/orderSave/${names}/${inputId}/${inputCity}/${inputPhone}/${inputAddress}/${product_id}`)
                 .then(res=>res.json())
                 .then(ress=>console.log(ress))
             Swal.fire(
-                'Deleted!',
-                'Your file has been deleted.',
-                'success'
-            )
+                'APPROVED!',
+                'We will contact with you soon ',
+                'Thank You',
+        ).then(function(){
+            window.location.href="/";
+        })  
         }
+      
     })
+
 }

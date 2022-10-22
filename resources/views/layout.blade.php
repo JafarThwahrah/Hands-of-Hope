@@ -131,7 +131,7 @@
                     <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Our Services</a>
                     <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Meet The Team</a>
                     <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Latest Blog</a>
-                    <a class="text-light" href=""><i class="fa fa-angle-right me-2"></i>Contact Us</a>
+                    <a class="text-light" href="#"><i class="fa fa-angle-right me-2"></i>Contact Us</a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">

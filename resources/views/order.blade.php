@@ -1,8 +1,8 @@
 @extends("layout")
 @section('content')
 
-<div class="d-flex m-5 justify-content-center w-50">
-<form class="row g-3" method="get" >
+<div class="d-flex w-100 justify-content-center mt-5">
+<form class="row g-3 w-50" method="get" >
     <div class="col-md-6">
       <label for="inputEmail4" class="form-label">Name</label>
       <input type="text" name="name" class="form-control" id="inputName" placeholder="Name">
@@ -29,7 +29,6 @@
       <button type="button" onclick="addOrder()" class="btn btn-primary">Submit</button>
     </div>
   </form>
-
 </div>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
