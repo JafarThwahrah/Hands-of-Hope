@@ -79,9 +79,9 @@ Route::post('/appointment/store/{id}' , [AppointmentController::class, 'appointm
 
 
 // login register
-//Route::get('/dashboard', function () {
-//    return view('dashboard');
-//})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 require __DIR__.'/auth.php';
 
 
@@ -104,11 +104,18 @@ Route::get('/admin/deleteDoctor/{id}',[AdminController::class,'deleteDoctor']);
 
 Route::get('/admin/allDoctor',[AdminController::class,'allDoctor']);
 Route::get('/admin/allUsers',[AdminController::class,'allUsers']);
+
+
 Route::get('/admin/allProduct',[AdminController::class,'allProduct']);
 Route::post('/admin/addProduct',[AdminController::class,'addProduct']);
+Route::get('/admin/editProduct/{id}',[AdminController::class,'editProduct']);
+Route::post('/admin/storeEditProduct/{id}',[AdminController::class,'storeEditProduct']);
+Route::get('/admin/deleteProduct/{id}',[AdminController::class,'deleteProduct']);
 
 
-
+Route::get('/admin/allAppointment',[AdminController::class,'allAppointment']);
+Route::get('/admin/deleteAppointment/{id}',[AdminController::class,'deleteAppointment']);
+Route::get('/admin/editAppointment/{id}',[AdminController::class,'editAppointment']);
 
 
 // contact page

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\appointment;
 use App\Models\doctor;
 use App\Models\product;
 use App\Models\User;
@@ -44,7 +45,14 @@ class AdminController extends Controller
     {
         //TODO get All product From table
         $allProduct = product::all();
-        return view('admin.allProduct',['allProduct'=>$allProduct]);
+        return view('admin.allProduct', ['allProduct' => $allProduct]);
+    }
+
+    public function allAppointment()
+    {
+        //TODO get All product From table
+        $allAppointment = appointment::all();
+        return view('admin.allAppointment', ['allAppointment' => $allAppointment]);
     }
 
     /**
@@ -86,12 +94,18 @@ class AdminController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     *
      */
     public function addProduct(Request $request)
     {
-        dd($request);
-        //TODO add product to table
+        $product = new product();
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $image = base64_encode(file_get_contents($request->file('image')));
+        $product->image = $image;
+        $product->save();
+
+        return redirect('/admin/allProduct');
     }
 
     /**
@@ -128,6 +142,13 @@ class AdminController extends Controller
         $user = User::find($id);
 
         return view('admin.editUser', ['user' => $user]);
+    }
+
+    public function editProduct($id)
+    {
+        $product = product::find($id);
+
+        return view('admin.editProduct', ['product' => $product]);
     }
 
     public function editDoctor($id)
@@ -167,6 +188,18 @@ class AdminController extends Controller
         $user->role = $request->role;
         $user->save();
         return redirect('admin')->withSuccess('User Updated');
+    }
+
+    public function storeEditProduct(Request $request, $id)
+    {
+
+        $product = product::find($id);
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $image = base64_encode(file_get_contents($request->file('image')));
+        $product->image = $image;
+        $product->save();
+        return redirect('admin/allProduct')->withSuccess('User Updated');
     }
 
     public function storeEditDoctor(Request $request, $id)
@@ -210,5 +243,18 @@ class AdminController extends Controller
         $doctor = doctor::destroy($id);
 
         return response()->json($doctor);
+    }
+
+    public function deleteProduct($id)
+    {
+        $product = product::destroy($id);
+
+        return response()->json($product);
+    }
+
+    public function deleteAppointment($id)
+    {
+        $appointment = appointment::destroy($id);
+        return response()->json($appointment);
     }
 }

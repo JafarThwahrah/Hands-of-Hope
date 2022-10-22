@@ -92,6 +92,7 @@
                 </div>
                 <div class="owl-dots disabled"></div>
                 @foreach($doctors as $doctor)
+
                     <div class="team-item">
                         <div class="row g-0 bg-light rounded overflow-hidden">
                             <div class="col-12 col-sm-5 h-100">
@@ -102,7 +103,7 @@
                             <div class="col-12 col-sm-7 h-100 d-flex flex-column">
                                 <div class="mt-auto p-4">
                                     <h3>{{$doctor['name']}}</h3>
-                                    <h6 class="fw-normal fst-italic text-primary mb-4">{{App\Models\departments::find($doctor['department_id'])->name}}</h6>
+                                    <h6 class="fw-normal fst-italic text-primary mb-4">{{$doctor['name']}}</h6>
                                     <p class="m-0">{{$doctor['overview']}}</p>
                                 </div>
                                 <div class="d-flex mt-auto border-top p-4">
