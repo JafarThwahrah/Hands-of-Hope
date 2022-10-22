@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\doctor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rules\Password;
 
 class DoctorController extends Controller
 {
@@ -22,7 +23,6 @@ class DoctorController extends Controller
     public function showdoctorpage($id)
     {
         $doctor = doctor::where('id', $id)->get();
-        // dd($doctor);
         $appointmentsAndusers = DB::table('appointment')->join('users', 'appointment.user_id', '=', 'users.id')->where('appointment.doctor_id' , $id)->get();
 
         return view('doctorpage' , ['id' => $id , 'doctor' => $doctor , 'appointmentsAndusers' => $appointmentsAndusers]);
@@ -36,19 +36,20 @@ class DoctorController extends Controller
     public function updateDoctorProfile(Request $request, $id){
 
         $request->validate([
-            'Name' => 'required',
-            'Email' => 'required',
-            'Password' => 'required',
-            'Available' => 'required',
-            'Personal' => 'required',
-            'Certificate' => 'required',
+            'Name' => ['required', 'string', 'max:255'],
+            'Email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'Personal'=>['required'],
+            'Certificate'=>['required'],
+            'Available'=>['required'],
+            'Password' => ['required'],
 
             
         ]);
 
-        
+        $image = base64_encode(file_get_contents($request->file('image')));
+        $Certificate = base64_encode(file_get_contents($request->file('Certificate')));
 
-        doctor::where('id', $id)->update(['name' => request('Name'), 'email' => request('Email'), 'password' => request('Password'), 'available_time' => request('Available'), 'image' => request('Personal'), 'certificate' => request('Certificate') ]);
+        doctor::where('id', $id)->update(['name' => request('Name'), 'email' => request('Email'), 'password' => request('Password'), 'available_time' => request('Available'), 'image' => $image, 'certificate' => $Certificate ]);
 
         return redirect("/doctorprofile/$id")->with('mssg', 'Personal information updated successfully');
     
