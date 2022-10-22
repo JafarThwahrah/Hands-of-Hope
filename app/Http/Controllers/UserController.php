@@ -86,14 +86,7 @@ class UserController extends Controller
         
     }
 
-    public function selectDoctorPage(){
 
-            $doctors = doctor::all();
-            $DoctorsAndDepartment = DB::table('doctors')->join('departments', 'doctors.department_id', '=', 'departments.id')->get();
-
-            dd($DoctorsAndDepartment);
-            return view('selectdoc' , ['doctors' => $doctors]);
-    }
 
     /**
      * Show the form for creating a new resource.

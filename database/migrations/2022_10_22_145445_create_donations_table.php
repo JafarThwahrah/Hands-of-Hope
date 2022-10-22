@@ -13,12 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('departments', function (Blueprint $table) {
+        Schema::create('donations', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->mediumText('description');
-            $table->integer('numberOfMembers');
             $table->timestamps();
+            $table->string('emailDon');
+            $table->integer('cardNo');
+            $table->integer('securityCode');
+            $table->date('expirationDate');
+            $table->string('cardholderName');
+            $table->string('billingAddress');
+            $table->integer('zip');
+            $table->integer('donationAmount');
+
         });
     }
 
@@ -29,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('departments');
+        Schema::dropIfExists('donations');
     }
 };

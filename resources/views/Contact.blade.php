@@ -32,7 +32,7 @@
                         <div class="d-flex align-items-center justify-content-center bg-primary rounded-circle mb-4" style="width: 100px; height: 70px; transform: rotate(-15deg);">
                             <i class="fa fa-2x fa-envelope-open text-white" style="transform: rotate(15deg);"></i>
                         </div>
-                        <h6 class="mb-0">Hope7@gmail.com</h6>
+                        <h6 class="mb-0">HandsOFHope@gmail.com</h6>
                     </div>
                 </div>
             </div>
