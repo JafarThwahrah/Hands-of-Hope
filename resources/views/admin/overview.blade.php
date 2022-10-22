@@ -33,7 +33,7 @@
                                 <td>
                                     <div>
                                         <a class="fa-solid fa-user-pen me-2" href="editUser/{{$user['id']}}"></a>
-                                        <a class="fa-solid fa-trash" onclick="deleteUser(this,{{$user['id']}})"></a>
+                                        <a class="fa-solid fa-trash text-danger" onclick="deleteUser(this,{{$user['id']}})"></a>
                                     </div>
                                 </td>
                             </tr>
@@ -77,7 +77,7 @@
                                 <td>
                                     <div>
                                         <a class="fa-solid fa-user-pen me-2"></a>
-                                        <a class="fa-solid fa-trash"
+                                        <a class="fa-solid fa-trash text-danger"
                                            onclick="deleteDoctor(this,{{$doctors['id']}})"></a>
                                     </div>
                                 </td>
@@ -118,7 +118,7 @@
                     <td>
                         <div>
                             <a class="fa-solid fa-user-pen me-2" href="editUser/{{$user['id']}}"></a>
-                            <a class="fa-solid fa-trash" onclick="deleteUser(this,{{$user['id']}})"></a>
+                            <a class="fa-solid fa-trash text-danger" onclick="deleteUser(this,{{$user['id']}})"></a>
                         </div>
                     </td>
                 </tr>
@@ -151,7 +151,7 @@
                     <td>
                         <div>
                             <a class="fa-solid fa-user-pen me-2" href="admin/editDoctor/{{$doctors['id']}}"></a>
-                            <a class="fa-solid fa-trash" onclick="deleteDoctor(this,{{$doctors['id']}})"></a>
+                            <a class="fa-solid fa-trash text-danger" onclick="deleteDoctor(this,{{$doctors['id']}})"></a>
                         </div>
                     </td>
                 </tr>

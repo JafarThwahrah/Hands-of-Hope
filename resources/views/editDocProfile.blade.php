@@ -30,7 +30,7 @@
 
                             @csrf
                             @method('PUT')
-                                @if ($errors->any())
+                            @if ($errors->any())
                                 <div class="alert alert-danger">
                                     <ul>
                                         @foreach ($errors->all() as $error)
@@ -55,8 +55,9 @@
                             </div>
                             
                             <div class="mb-3">
-                                <label for="Available" class="form-label">Available Time</label>
-                                <input type="text" class="form-control" id="Available" name="Available" value="{{$doctorinfo->available_time}}" aria-describedby="">
+                                <label class="mb-2" for="available">Select Availability</label>
+                                    <input type="date" class="form-control" name="Available" id="available" value="{{$doctorinfo->available_time}}" aria-describedby="Password">
+
                                 </div>
 
                                 <div class="mb-3">

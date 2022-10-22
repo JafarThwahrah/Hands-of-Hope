@@ -12,6 +12,10 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DonationController;
+use App\Http\Controllers\DepartmentsController;
+use App\Http\Controllers\AppointmentController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,17 +27,14 @@ use App\Http\Controllers\DonationController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//Landing Page
+Route::get('/' , [DepartmentsController::class, 'index'])->name('HomePage');
 
-// Route::get('/', function () {
-//     return view('Home.index');
-// });
-
-Route::get('/' , [Controller::class, 'index']);
 
 
 //testimonial routes
-Route::get('/userprofile/testimonial' , [UserController::class, 'testimonial'])->name('testimonial');
-Route::post('/userprofile/testimonial/post' , [UserController::class, 'testimonialpost'])->name('testimonialpost');
+Route::get('/userprofile/testimonial/{id}' , [UserController::class, 'testimonial'])->name('testimonial');
+Route::post('/userprofile/testimonial/post/{id}' , [UserController::class, 'testimonialpost'])->name('testimonialpost');
 
 
 //user profile routes
@@ -47,6 +48,9 @@ Route::put('/userprofile/edit/update/{id}' , [UserController::class, 'updateuser
 Route::get('/doctorprofile/{id}' , [DoctorController::class, 'showdoctorpage']);
 Route::get('/doctorprofile/edit/{id}' , [DoctorController::class, 'editdoctorinfo'])->name('editDocProfile');
 Route::put('/doctorprofile/edit/update/{id}' , [DoctorController::class, 'updateDoctorProfile'])->name('updateDoctorProfile');
+
+
+
 
 // abou page
 Route::get('/about', function () {
@@ -62,10 +66,16 @@ Route::get('/Contact', function () {
 //Route::get('/index', function () {
 //
 //});
+
 // appointment
-Route::get('/appointment', function () {
+Route::get('/appointment/{id}', function () {
     return  view('appointment');
 });
+Route::get('/appointment/{id}' , [AppointmentController::class, 'appointmentPage'])->name('appointmentPage');
+Route::post('/appointment/store/{id}' , [AppointmentController::class, 'appointmentStore'])->name('appointmentStore');
+
+
+
 
 
 // login register
