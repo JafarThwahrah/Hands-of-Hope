@@ -1,16 +1,17 @@
 <?php
 
+use App\Models\Donation;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\UserController;
 
+
 use App\Http\Controllers\AdminController;
-
-
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\ProductController;
-
+use App\Http\Controllers\DonationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -76,7 +77,7 @@ require __DIR__.'/auth.php';
 
 // order
 Route::get('/product' , [ProductController::class, 'index']);
-Route::get('order/{id}', [OrderController::class, 'index'])->middleware(['auth', 'verified']);
+Route::get('order/{id}', [OrderController::class, 'indexO'])->middleware(['auth', 'verified']);
 Route::get('/orderSave/{names}/{inputId}/{inputCity}/{inputPhone}/{inputAddress}/{product_id}' , [OrderController::class, 'store']);
 
 
@@ -104,3 +105,11 @@ Route::post('/admin/addProduct',[AdminController::class,'addProduct']);
 Route::get('/test', function () {
     return view('test');
 });
+
+
+//Donation
+Route::post('donationForm' , [DonationController::class, 'store']);
+Route::get('/donation', function () {
+    return  view('donation');
+});
+
