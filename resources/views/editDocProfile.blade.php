@@ -55,8 +55,16 @@
                             </div>
                             
                             <div class="mb-3">
-                                <label for="Available" class="form-label">Available Time</label>
-                                <input type="text" class="form-control" id="Available" name="Available" value="{{$doctorinfo->available_time}}" aria-describedby="">
+                                <label class="mb-2" for="available">Select Availability</label>
+                                <select class="form-select bg-light border-0 mb-2" style="height: 55px;" name="Available" id="available">
+                                  <option value="Saturday">Saturday</option>
+                                  <option value="Sunday">Sunday</option>
+                                  <option value="Tuesday">Tuesday</option>
+                                  <option value="Wednesday">Wednesday</option>
+                                  <option value="Thursday">Thursday</option>
+                                  <option value="Friday">Friday</option>
+
+                                </select>
                                 </div>
 
                                 <div class="mb-3">

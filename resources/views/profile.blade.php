@@ -17,7 +17,7 @@
 @section('content')
     
 @if(session('mssg'))
-<div class="row justify-content-md-center py-5">
+<div class="row justify-content-md-center py-3">
 
 <h3 class="alert alert-success text-center col-md-4">{{session ('mssg')}}</h3>
 </div>
@@ -128,21 +128,23 @@
               <table id="mytable" class="table table-bordred table-striped">
                   <thead class="">
                       <th><h5>Order Number</h5></th>
-                      <th><h5>Product Name:</h5></th>
+                      <th><h5>Product Name</h5></th>
                       <th><h5>status</h5></th>
                       <th><h5>Date</h5></th>
 
                   </thead>
-                  @foreach($appointments as $appointment)
+                  @foreach($orders as $order)
 
                   <tbody>
 
                           <!-- Display Records -->
                           <tr class="">
-                              <td class="">{{$appointment->id}}</td>
-                              <td class="">{{$appointment->appointment_time}}</td>
-                              <td class="">07:25AM</td>
-                              <td class="">{{$appointment->name}}</td>
+                              <td class="">{{$order->id}}</td>
+                              <td class="">{{$order->name}}</td>
+                              <td class="">{{$order->name}}</td>
+
+                              {{-- <td class="">{{$order->status}}</td> --}}
+                              <td class="">{{$order->created_at}}</td>
 
 
 
@@ -160,7 +162,7 @@
 
 </div>
 <ul class="nav nav-pills d-flex flex-row-reverse" style="margin-right: 5.5rem">
-  <li class=""><a class="btn btn-outline-primary " href="{{route('testimonial')}}"> Tell us about your experiance</a></li>
+  <li class=""><a class="btn btn-outline-primary " href="{{route('testimonial' , $id)}}"> Tell us about your experiance</a></li>
 
 </ul>
 
