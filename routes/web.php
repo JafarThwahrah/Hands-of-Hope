@@ -89,13 +89,18 @@ Route::post('/admin/storeEdit/{id}',[AdminController::class,'storeEdit']);
 Route::get('/admin/editDoctor/{id}',[AdminController::class,'editDoctor']);
 Route::post('/admin/storeEditDoctor/{id}',[AdminController::class,'storeEditDoctor']);
 
+Route::get('/admin/editOrder/{id}',[AdminController::class,'editOrder']);
+Route::post('/admin/storeEditOrder/{id}',[AdminController::class,'storeEditOrder']);
+
 Route::get('/admin/delete/{id}',[AdminController::class,'destroy']);
 Route::get('/admin/deleteDoctor/{id}',[AdminController::class,'deleteDoctor']);
+Route::get('/admin/deleteOrder/{id}',[AdminController::class,'deleteOrder']);
 
 Route::get('/admin/allDoctor',[AdminController::class,'allDoctor']);
 Route::get('/admin/allUsers',[AdminController::class,'allUsers']);
 Route::get('/admin/allProduct',[AdminController::class,'allProduct']);
 Route::post('/admin/addProduct',[AdminController::class,'addProduct']);
+Route::get('/admin/allOrder',[AdminController::class,'allOrder']);
 
 
 

@@ -42,6 +42,10 @@
             <i class="bx bxl-product-hunt" style="color:#1D2A4D;"></i>
             <span class="mx-2" style="color:#1D2A4D;">All Product</span>
         </a>
+        <a href="/admin/allOrder" class="nav-link">
+            <i class='bx bx-package' style="color:#1D2A4D;"></i>
+            <span class="mx-2" style="color:#1D2A4D;">All Order</span>
+        </a>
     </ul>
 
 

@@ -3,7 +3,7 @@
 @section('content')
     <br>
     <div class="container w-50">
-        <h4>Edit User Information</h4>
+        <h4>Edit Doctor Information</h4>
         <form action="/admin/storeEditDoctor/{{$doctor['id']}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
