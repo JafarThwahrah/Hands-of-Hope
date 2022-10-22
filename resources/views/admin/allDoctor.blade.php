@@ -23,10 +23,7 @@
     </div>
     <div>
         <br>
-        <div class="d-flex justify-content-between">
-            <div class="h4">All Doctors</div>
-            <a type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#allDoctors">View All</a>
-        </div>
+   
         <table class="table text-center">
             <thead>
             <tr>

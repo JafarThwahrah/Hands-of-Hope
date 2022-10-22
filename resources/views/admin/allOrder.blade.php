@@ -53,7 +53,7 @@
                     <td>
                         <div>
                             <a class="fa-solid fa-user-pen me-2" href="editOrder/{{$order['id']}}"></a>
-                            <a class="fa-solid fa-trash" onclick="deleteUser(this,{{$order['id']}})"></a>
+                            <a class="fa-solid fa-trash" onclick="deleteOrder(this,{{$order['id']}})"></a>
                         </div>
                     </td>
                 </tr>
