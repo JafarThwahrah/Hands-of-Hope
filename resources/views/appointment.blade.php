@@ -32,10 +32,14 @@
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <select class="form-select bg-light border-0" style="height: 55px;">
-                                        <option selected="">Select Doctor</option>
-                                        <option value="1">Doctor 1</option>
-                                        <option value="2">Doctor 2</option>
-                                        <option value="3">Doctor 3</option>
+                                        <option selected="">Select Day</option>
+                                        <option value="1">Saturday</option>
+                                        <option value="2">Sunday</option>
+                                        <option value="3">Monday</option>
+                                        <option value="3">Tuesday</option>
+                                        <option value="3">Wednesday</option>
+                                        <option value="3">Thursday</option>
+                                        <option value="3">Friday</option>
                                     </select>
                                 </div>
                                 <div class="col-12 col-sm-6">
@@ -71,5 +75,7 @@
             </div>
         </div>
     </section>
+
+    
     {{-- End Appointment Section --}}
 @endsection

@@ -26,8 +26,8 @@ Route::get('/', function () {
     return view('Home.index');
 });
 //testimonial routes
-Route::get('/userprofile/testimonial' , [UserController::class, 'testimonial'])->name('testimonial');
-Route::post('/userprofile/testimonial/post' , [UserController::class, 'testimonialpost'])->name('testimonialpost');
+Route::get('/userprofile/testimonial/{id}' , [UserController::class, 'testimonial'])->name('testimonial');
+Route::post('/userprofile/testimonial/post/{id}' , [UserController::class, 'testimonialpost'])->name('testimonialpost');
 
 
 //user profile routes
@@ -41,6 +41,11 @@ Route::put('/userprofile/edit/update/{id}' , [UserController::class, 'updateuser
 Route::get('/doctorprofile/{id}' , [DoctorController::class, 'showdoctorpage']);
 Route::get('/doctorprofile/edit/{id}' , [DoctorController::class, 'editdoctorinfo'])->name('editDocProfile');
 Route::put('/doctorprofile/edit/update/{id}' , [DoctorController::class, 'updateDoctorProfile'])->name('updateDoctorProfile');
+
+//Select doctor page
+Route::get('/selectDoctorPage' , [UserController::class, 'selectDoctorPage'])->name('selectDoctorPage');
+
+
 
 // abou page
 Route::get('/about', function () {

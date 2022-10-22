@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\doctor;
 use App\Models\appointment;
+use App\Models\Order;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -25,11 +26,10 @@ class UserController extends Controller
     {
         $User = User::where('id', $id)->get();
         $appointmentsAndDoctors = DB::table('appointment')->join('doctors', 'appointment.doctor_id', '=', 'doctors.id')->where('appointment.user_id' , $id)->get();
+        $orders = DB::table('orders')->join('products', 'orders.product_id', '=', 'products.id')->where('orders.user_id' , $id)->get();
+// dd($orders);
 
-
-        $orders = User::where('id', $id)->get();
-
-        return view('profile' ,  ['id' => $id, 'User' => $User , 'appointments' => $appointmentsAndDoctors]);
+        return view('profile' ,  ['id' => $id, 'User' => $User , 'appointments' => $appointmentsAndDoctors , 'orders' => $orders]);
 
     }
 
@@ -56,17 +56,18 @@ class UserController extends Controller
 
     }
 
-    public function testimonial(){
+    public function testimonial($id){
 
-        return view('testimonial');
+        $User = User::where('id', $id)->get();
+        
+        return view('testimonial' , ['id' => $id , 'User' => $User]);
     }
 
-    public function testimonialpost(Request $request){
+    public function testimonialpost(Request $request , $id){
         
         $request->validate([
-            'book_title' => 'unique:books|max:255',
-            'book_author' => '',
-            'book_description' => ''
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255'],
         ]);
        
 
@@ -81,8 +82,17 @@ class UserController extends Controller
 
         $Testimonial->save();
 
-        return redirect('/')->with('mssg', 'Book added successfully');
+        return redirect("/userprofile/$id")->with('mssg', 'Thanks for sharing your opinion with us');
         
+    }
+
+    public function selectDoctorPage(){
+
+            $doctors = doctor::all();
+            $DoctorsAndDepartment = DB::table('doctors')->join('departments', 'doctors.department_id', '=', 'departments.id')->get();
+
+            dd($DoctorsAndDepartment);
+            return view('selectdoc' , ['doctors' => $doctors]);
     }
 
     /**

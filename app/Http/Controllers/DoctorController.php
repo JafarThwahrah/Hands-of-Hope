@@ -36,9 +36,13 @@ class DoctorController extends Controller
     public function updateDoctorProfile(Request $request, $id){
 
         $request->validate([
-            'name' => '',
-            'email' => '',
-            'password' => '',
+            'Name' => 'required',
+            'Email' => 'required',
+            'Password' => 'required',
+            'Available' => 'required',
+            'Personal' => 'required',
+            'Certificate' => 'required',
+
             
         ]);
 
