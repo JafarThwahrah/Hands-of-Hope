@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\appointment;
 use App\Models\doctor;
 use App\Models\product;
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -257,4 +258,67 @@ class AdminController extends Controller
         $appointment = appointment::destroy($id);
         return response()->json($appointment);
     }
+
+
+    
+  /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function allOrder()
+    {
+
+        $allOrders = Order::all();
+        $approved = Order::all('status')->where('status', '=', 'Approve');
+        $pending = Order::all('status')->where('status', '=', 'pending ');
+        return view('admin.allOrder', ['allOrders' => $allOrders, 'approved' => $approved, 'pending' => $pending]);
+    }
+
+
+ /**
+     * Remove the specified resource from storage.
+     *
+     * @param int $id
+     *
+     */
+    public function deleteOrder($id)
+    {
+        $order = Order::destroy($id);
+
+        return response()->json( $order);
+    }
+
+
+
+    public function editOrder($id)
+    {
+        $order = Order::find($id);
+
+        return view('admin.editOrder', ['order' => $order]);
+    }
+
+
+
+    public function storeEditOrder(Request $request, $id)
+    {
+      
+        $order = Order::find($id);
+        $order->user_id = $request->user_id;
+        $order->product_id = $request->product_id;
+        $order->national = $request->national;
+        $order->phone = $request->phone;
+        $order->address = $request->address;
+        $order->city = $request->city;
+        $order->status = $request->status;
+        $order->save();
+        return redirect('admin')->withSuccess('Order Updated');
+    }
+
+
+
+
+
+
+
 }

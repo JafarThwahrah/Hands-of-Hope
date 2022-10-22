@@ -46,6 +46,10 @@
             <i class="bx bx-plus-medical" style="color:#1D2A4D;"></i>
             <span class="mx-2" style="color:#1D2A4D;">All Appointment</span>
         </a>
+        <a href="/admin/allOrder" class="nav-link">
+            <i class='bx bx-package' style="color:#1D2A4D;"></i>
+            <span class="mx-2" style="color:#1D2A4D;">All Order</span>
+        </a>
     </ul>
 
 
