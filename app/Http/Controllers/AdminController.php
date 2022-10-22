@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\appointment;
 use App\Models\doctor;
+use App\Models\product;
 use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -43,7 +45,15 @@ class AdminController extends Controller
     public function allProduct()
     {
         //TODO get All product From table
-        return view('admin.allProduct');
+        $allProduct = product::all();
+        return view('admin.allProduct', ['allProduct' => $allProduct]);
+    }
+
+    public function allAppointment()
+    {
+        //TODO get All product From table
+        $allAppointment = appointment::all();
+        return view('admin.allAppointment', ['allAppointment' => $allAppointment]);
     }
 
     /**
@@ -85,12 +95,18 @@ class AdminController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     *
      */
     public function addProduct(Request $request)
     {
-        dd($request);
-        //TODO add product to table
+        $product = new product();
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $image = base64_encode(file_get_contents($request->file('image')));
+        $product->image = $image;
+        $product->save();
+
+        return redirect('/admin/allProduct');
     }
 
     /**
@@ -127,6 +143,13 @@ class AdminController extends Controller
         $user = User::find($id);
 
         return view('admin.editUser', ['user' => $user]);
+    }
+
+    public function editProduct($id)
+    {
+        $product = product::find($id);
+
+        return view('admin.editProduct', ['product' => $product]);
     }
 
     public function editDoctor($id)
@@ -166,6 +189,18 @@ class AdminController extends Controller
         $user->role = $request->role;
         $user->save();
         return redirect('admin')->withSuccess('User Updated');
+    }
+
+    public function storeEditProduct(Request $request, $id)
+    {
+
+        $product = product::find($id);
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $image = base64_encode(file_get_contents($request->file('image')));
+        $product->image = $image;
+        $product->save();
+        return redirect('admin/allProduct')->withSuccess('User Updated');
     }
 
     public function storeEditDoctor(Request $request, $id)
@@ -211,61 +246,16 @@ class AdminController extends Controller
         return response()->json($doctor);
     }
 
-
-  /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function allOrder()
+    public function deleteProduct($id)
     {
+        $product = product::destroy($id);
 
-        $allOrders = Order::all();
-        $approved = Order::all('status')->where('status', '=', 'Approve');
-        $pending = Order::all('status')->where('status', '=', 'pending ');
-        return view('admin.allOrder', ['allOrders' => $allOrders, 'approved' => $approved, 'pending' => $pending]);
+        return response()->json($product);
     }
 
-
- /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     *
-     */
-    public function deleteOrder($id)
+    public function deleteAppointment($id)
     {
-        $order = Order::destroy($id);
-
-        return response()->json( $order);
+        $appointment = appointment::destroy($id);
+        return response()->json($appointment);
     }
-
-
-
-    public function editOrder($id)
-    {
-        $order = Order::find($id);
-
-        return view('admin.editOrder', ['order' => $order]);
-    }
-
-
-
-    public function storeEditOrder(Request $request, $id)
-    {
-      
-        $order = Order::find($id);
-        $order->user_id = $request->user_id;
-        $order->product_id = $request->product_id;
-        $order->national = $request->national;
-        $order->phone = $request->phone;
-        $order->address = $request->address;
-        $order->city = $request->city;
-        $order->status = $request->status;
-        $order->save();
-        return redirect('admin')->withSuccess('Order Updated');
-    }
-
-
-
 }

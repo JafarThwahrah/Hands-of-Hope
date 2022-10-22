@@ -17,10 +17,9 @@
 @section('content')
     
 @if(session('mssg'))
-<div class="row justify-content-md-center py-5">
-
-<h3 class="alert alert-success text-center col-md-4">{{session ('mssg')}}</h3>
-</div>
+  <div class="row justify-content-md-center py-5">
+  <h3 class="alert alert-success text-center col-md-4">{{session ('mssg')}}</h3>
+  </div>
 @endif
 @foreach($doctor as $doctorinfo)
 
@@ -30,7 +29,8 @@
       <div class="panel border">
           <div class="user-heading round">
               <a href="#">
-                  <img src="{{$doctorinfo->image}}" alt="">
+                  <img src="data:image/jpg;charset=utf8;base64,{{$doctorinfo['image']}}"
+                   alt="">
               </a>
               <h1>{{$doctorinfo->name}}</h1>
               <p>{{$doctorinfo->email}}</p>
@@ -75,7 +75,7 @@
                     <p><span>Mobile </span>: 0785631487</p>
                 </div>
                   <div class="bio-row">
-                      <p><span>Certificate </span>:  {{$doctorinfo->cetrificate}}</p>
+                      <p><span>Certificate </span>  {{$doctorinfo->cetrificate}}</p>
                   </div>
                  
                  

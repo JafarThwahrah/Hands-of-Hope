@@ -1,6 +1,36 @@
 @extends('admin.index')
 {{--box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;--}}
 @section('content')
+    <div class="d-flex justify-content-between">
+        <div class="h4">All Products</div>
+    </div>
+    <table class="table text-center">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Image</th>
+            <th scope="col">description</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach($allProduct as $product)
+            <tr>
+                <th scope="row">{{$product['id']}}</th>
+                <td>{{$product['name']}}</td>
+                <td><img src="data:image/png;base64,{{$product['image']}}" alt="" style="width: 50px"> </td>
+                <td>{{$product['description']}}</td>
+                <td>
+                    <div>
+                        <a class="fa-solid fa-user-pen me-2" href="editProduct/{{$product['id']}}"></a>
+                        <a class="fa-solid fa-trash" onclick="deleteUser(this,{{$product['id']}})"></a>
+                    </div>
+                </td>
+            </tr>
+        @endforeach
+        </tbody>
+    </table>
     <div class="container w-75">
         <h4>Add Product</h4>
         <form action="/admin/addProduct" method="post" enctype="multipart/form-data">
@@ -20,5 +50,4 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
-
 @endsection

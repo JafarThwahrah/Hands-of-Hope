@@ -11,6 +11,7 @@ class appointment extends Model
     use HasFactory;
 
     protected $table = 'appointment';
+    
 
 
 }
