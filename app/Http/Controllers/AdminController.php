@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\doctor;
+use App\Models\product;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -42,7 +43,8 @@ class AdminController extends Controller
     public function allProduct()
     {
         //TODO get All product From table
-        return view('admin.allProduct');
+        $allProduct = product::all();
+        return view('admin.allProduct',['allProduct'=>$allProduct]);
     }
 
     /**
