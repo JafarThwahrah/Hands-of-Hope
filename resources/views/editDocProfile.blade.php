@@ -30,7 +30,7 @@
 
                             @csrf
                             @method('PUT')
-                                @if ($errors->any())
+                            @if ($errors->any())
                                 <div class="alert alert-danger">
                                     <ul>
                                         @foreach ($errors->all() as $error)
@@ -56,15 +56,8 @@
                             
                             <div class="mb-3">
                                 <label class="mb-2" for="available">Select Availability</label>
-                                <select class="form-select bg-light border-0 mb-2" style="height: 55px;" name="Available" id="available">
-                                  <option value="Saturday">Saturday</option>
-                                  <option value="Sunday">Sunday</option>
-                                  <option value="Tuesday">Tuesday</option>
-                                  <option value="Wednesday">Wednesday</option>
-                                  <option value="Thursday">Thursday</option>
-                                  <option value="Friday">Friday</option>
+                                    <input type="date" class="form-control" name="Available" id="available" value="{{$doctorinfo->available_time}}" aria-describedby="Password">
 
-                                </select>
                                 </div>
 
                                 <div class="mb-3">

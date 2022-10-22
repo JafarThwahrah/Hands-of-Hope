@@ -42,7 +42,7 @@
                             <h4 class="mb-3">Children's Services</h4>
                             <p class="m-0">Kasd dolor no lorem nonumy sit labore tempor at justo rebum rebum stet, justo
                                 elitr dolor amet sit</p>
-                            <a class="btn btn-lg btn-primary rounded-pill" href='/appointment'>
+                            <a class="btn btn-lg btn-primary rounded-pill" href='/appointment/{{$Department[0]->id}}'>
                                 <i class="bi bi-arrow-right"></i>
                             </a>
                         </div>
@@ -56,7 +56,7 @@
                             <h4 class="mb-3">Operation &amp; Surgery</h4>
                             <p class="m-0">Kasd dolor no lorem nonumy sit labore tempor at justo rebum rebum stet, justo
                                 elitr dolor amet sit</p>
-                            <a class="btn btn-lg btn-primary rounded-pill" href="/appointment">
+                            <a class="btn btn-lg btn-primary rounded-pill" href="/appointment/{{$Department[1]->id}}">
                                 <i class="bi bi-arrow-right"></i>
                             </a>
                         </div>
