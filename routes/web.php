@@ -1,13 +1,14 @@
 <?php
 
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
-use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\AdminController;
 
 
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\ProductController;
 
 
@@ -22,9 +23,13 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::get('/', function () {
-    return view('Home.index');
-});
+// Route::get('/', function () {
+//     return view('Home.index');
+// });
+
+Route::get('/' , [Controller::class, 'index']);
+
+
 //testimonial routes
 Route::get('/userprofile/testimonial' , [UserController::class, 'testimonial'])->name('testimonial');
 Route::post('/userprofile/testimonial/post' , [UserController::class, 'testimonialpost'])->name('testimonialpost');
@@ -71,7 +76,7 @@ require __DIR__.'/auth.php';
 
 // order
 Route::get('/product' , [ProductController::class, 'index']);
-Route::get('order/{id}', [OrderController::class, 'index']);
+Route::get('order/{id}', [OrderController::class, 'index'])->middleware(['auth', 'verified']);
 Route::get('/orderSave/{names}/{inputId}/{inputCity}/{inputPhone}/{inputAddress}/{product_id}' , [OrderController::class, 'store']);
 
 
@@ -92,3 +97,10 @@ Route::get('/admin/allProduct',[AdminController::class,'allProduct']);
 Route::post('/admin/addProduct',[AdminController::class,'addProduct']);
 
 
+
+
+
+// contact page
+Route::get('/test', function () {
+    return view('test');
+});
