@@ -13,10 +13,16 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
+    {
+    }
+
+
+    public function indexO($id)
     {
        return view('order',["id"=>$id]);
     }
+
 
     /**
      * Show the form for creating a new resource.

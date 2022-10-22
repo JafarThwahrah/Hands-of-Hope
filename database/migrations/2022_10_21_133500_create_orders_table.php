@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('address');
             $table->integer('phone');
             $table->integer('national');
+            $table->string('status')->default('pendding');
           $table->foreignId('product_id')->constrained()->onDelete('cascade');
         });
     }
