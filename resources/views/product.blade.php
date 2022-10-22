@@ -23,75 +23,45 @@
 
 
 
-{{-- 
-<div class="products-masonry-wrap" id="wrapProducts">
+<div class="container-fluid py-5">
+    <div class="container d-flex flex-wrap">
+        @foreach ($products as $product)
 
-    <ul class="products masonry-products row masonry-wrap">
+        <div class="bg-light rounded text-center m-3">
+            <div class="position-relative">
+                <img class="img-fluid rounded-top" src="data:image/jpg;charset=utf8;base64,{{$product['image']}}" alt="0000000">
+            </div>
+            <div class="text-center py-5 m-5">
+                <h3>{{$product['name']}}</h3>
+                <p>{{$product['description']}}</p>
+                <a href="order/{{$product['id']}}" class="btn btn-primary rounded-pill py-3 px-5 my-2">Order Now</a>
+            </div>
+        </div>
+        
 
-          
-            <li class="product masonry-item col-md-3 col-sm-6">
-                <div class="product-container">
-                    <figure>
-                        <div class="product-wrap">
-                            <div class="product-images">
-                                <div class="shop-loop-thumbnail">
-                                    <img width="300px" height="350px" src="data:image/jpg;charset=utf8;base64,{{$product['image']}}" alt="Product" />
-                                </div>
-                            
-                                <div class="clear"></div>
-                                <div class="shop-loop-quickview">
-                                    <a href="#" data-rel="quickViewModal"><i class="fa fa-plus"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <figcaption>
-                            <div class="shop-loop-product-info">
-                                <div class="info-title">
-                                    <h3 class="product_title"><a href="./product_page.php?prod_id={{$product['id']}}">{{$product['name']}}</a></h3>
-                                </div>
-                                <div class="info-meta">
-                                    <div class="info-price">
-                                        <span class="price">
-                                            <span class="amount">{{$product['desciption']}}</span>
-                                        </span>
-                                    </div>
-                                    <div class="loop-add-to-cart">
-                                        <a href="./order.php?ad={{$product['id']}}&from=shop">Order Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </figcaption>
-                    </figure>
-                </div>
-            </li>
-
-      @endforeach
-
-    </ul>
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div> --}}
+        @endforeach
 
 
-
-<div class="cards d-flex" >
-
-@foreach ($products as $product)
-<div class="card m-5" style="width: 18rem;">
-    <img src="data:image/jpg;charset=utf8;base64,{{$product['image']}}" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">{{$product['name']}}</h5>
-      <p class="card-text">{{$product['description']}}</p>
-      <a href="order/{{$product['id']}}" class="btn btn-primary">Order Now</a>
     </div>
-  </div>
-  @endforeach
-
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
