@@ -61,30 +61,63 @@
                   <div>
                       <h2 class="fw-bold">You're making a difference. </h2>
                   </div>
+                  {{-- @if ($errors->any())
+                  <div class="alert alert-danger">
+                      <ul>
+                          @foreach ($errors->all() as $error)
+                              <li>{{ $error }}</li>
+                          @endforeach
+                      </ul>
+                  </div>
+              @endif --}}
                   <form action="/donationForm" method="post">
                     @csrf
+                    
                       <div class="mb-3">
                           <p class="dis fw-bold mb-2">Email address</p>
+                          @if ($errors->has('emailDon'))
+    <span class="text-danger">{{ $errors->first('emailDon') }}</span>
+    @endif
+
                           <input class="form-control" name="emailDon" type="email" placeholder="name@email.com">
                       </div>
                           <p class="dis fw-bold mb-1">Card details</p>
+                          @if ($errors->has('cardNo')||$errors->has('expirationDate')||$errors->has('securityCode'))
+                              <span class="text-danger">{{ $errors->first('cardNo') }}</span> <br>
+                              <span class="text-danger">{{ $errors->first('expirationDate') }}</span> <br>
+                              <span class="text-danger">{{ $errors->first('securityCode') }}</span>
+
+                              @endif
                           <div class="d-flex align-items-center justify-content-between card-atm border rounded">
                               <div class="fab fa-cc-visa p-2"></div>
+                          
                               <input type="text" name="cardNo" class="form-control" placeholder="Card Details">
                               <div class="d-flex w-75">
+                              
                                   <input type="date" name="expirationDate" class="form-control m-1" placeholder="MM/YY">
+
                                   <input type="password" name="securityCode" maxlength=3 class="form-control m-1" placeholder="CVV">
                               </div>
                           </div>
                           <div class="my-3 cardname">
                               <p class="dis fw-bold mb-2">Cardholder name</p>
+                              @if ($errors->has('cardholderName'))
+                                  <span class="text-danger">{{ $errors->first('cardholderName') }}</span>
+                                  @endif
                               <input class="form-control" name="cardholderName" type="text">
                           </div>
                           <div class="my-3 address">
                               <p class="dis fw-bold mb-3">Billing address</p>
+                              @if ($errors->has('billingAddress'))
+                              <span class="text-danger">{{ $errors->first('billingAddress') }}</span>
+                              @endif
                               <input class="form-control" name="billingAddress" type="text">
                           </div>
                               <div class="my-3 address">
+
+                                @if ($errors->has('zip'))
+                                <span class="text-danger">{{ $errors->first('zip') }}</span>
+                                @endif
                                 <p class="dis fw-bold mb-3">Zip</p>
                                   <input class="form-control zip" name="zip" type="text" placeholder="ZIP">
                               </div>
@@ -93,6 +126,9 @@
                               <div class=" my-3">
                                   <p class="dis fw-bold mb-2">Donation Amount</p>
                                   <div class="inputWithcheck">
+                                    @if ($errors->has('donationAmount'))
+                                    <span class="text-danger">{{ $errors->first('donationAmount') }}</span>
+                                    @endif
                                       <input class="form-control"name="donationAmount" type="text" value="0" placeholder="JD">
                                     
                                   </div>

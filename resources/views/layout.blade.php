@@ -34,6 +34,12 @@
 
 <body>
 
+@php
+
+use App\Models\departments;
+    $Department = departments::all();
+@endphp
+
 <!-- Navbar Start -->
 <div class="container-fluid sticky-top bg-white shadow-sm">
     <div class="container">
@@ -53,12 +59,12 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Departments</a>
                         <div class="dropdown-menu m-0">
-                            <a href="/appointment" class="dropdown-item">Emergency Care</a>
-                            <a href="/appointment" class="dropdown-item">Operation & Surgery</a>
-                            <a href="/appointment" class="dropdown-item">Outdoor Checkup</a>
-                            <a href="/appointment" class="dropdown-item">Ambulance Service</a>
-                        
-                            <a href="/appointment" class="dropdown-item">Blood Testing</a>
+                            @foreach($Department as $department)
+
+                            <a href="{{route('appointmentPage',$department['id'])}}" class="dropdown-item">{{$department['name']}}</a>
+                            @endforeach
+
+                         
                         </div>
                     </div>
                     
@@ -68,7 +74,7 @@
                     <a href="/profile" class="nav-item nav-link">Profile</a>
                     @endauth
                     @guest
-                    <a href="/register" class="nav-item nav-link ">Login</a>
+                    <a href="/register" class="nav-item nav-link ">Login/Register</a>
                     @endguest
                 </div>
             </div>

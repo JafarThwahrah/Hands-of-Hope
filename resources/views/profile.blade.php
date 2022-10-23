@@ -39,42 +39,43 @@
               <div class="row">
                 <div class="biosection1 col-md-12">
                   <div class="bio-row">
-                      <p><span>Name </span>: {{$userinfo->name}}</p>
+                     <h5> Name: {{$userinfo->name}}</h5>
                   </div>
                   <div class="bio-row">
-                      <p><span>Last Name </span>: Smith</p>
+                     <h5> Email:  {{$userinfo->email}}</h5>
+                  </div>
+                  
+                  <div class="bio-row">
+                    <h5>Birthday: 13 July 1983</h5>
                   </div>
                   <div class="bio-row">
-                      <p><span>Country </span>: Australia</p>
-                  </div>
-                  <div class="bio-row">
-                      <p><span>Birthday</span>: 13 July 1983</p>
-                  </div>
+                    <h5> Mobile: 0785631487</h5>
+                 </div>
                 </div>
 
                 <div class="biosection1 col-md-12">
 
-                  <div class="bio-row">
-                    <p><span>Mobile </span>: 0785631487</p>
-                </div>
-                  <div class="bio-row">
-                      <p><span>Email </span>:  {{$userinfo->email}}</p>
-                  </div>
                  
+                
+                  <div class="bio-row">
+                      <h5>City:  Amman</h5>
+                  </div>
+                </div>
+
+                 <div class="ms-4 row">
                   <ul class="nav nav-pills">
                     <li class=""><a class="btn btn-outline-info" href="{{route('editProfile' , $id)}}"> <i class="fa fa-edit"></i> Edit profile</a></li>
                     <li class="ms-4"><a class="btn btn-outline-danger" href="#" style="color: red"><i class="bi bi-box-arrow-in-left"></i> Logout</a></li>
       
                 </ul>
-
-                </div>
-
-            
               </div>
+
+
               @endforeach
           </div>
       </div>
     </div>
+  </div>
 
 
   </div>
@@ -88,7 +89,6 @@
                     <thead class="">
                         <th><h5>Appointment Number</h5></th>
                         <th><h5>Date</h5></th>
-                        <th><h5>Time</h5></th>
                         <th><h5>Doctor Name</h5></th>
 
                     </thead>
@@ -100,7 +100,6 @@
                             <tr class="">
                                 <td class="">{{$appointment->id}}</td>
                                 <td class="">{{$appointment->appointment_time}}</td>
-                                <td class="">07:25AM</td>
                                 <td class="">{{$appointment->name}}</td>
 
 
@@ -141,9 +140,7 @@
                           <tr class="">
                               <td class="">{{$order->id}}</td>
                               <td class="">{{$order->name}}</td>
-                              <td class="">{{$order->name}}</td>
-
-                              {{-- <td class="">{{$order->status}}</td> --}}
+                              <td class="">{{$order->status}}</td>
                               <td class="">{{$order->created_at}}</td>
 
 

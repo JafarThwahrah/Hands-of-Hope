@@ -25,7 +25,7 @@ class DonationController extends Controller
             'cardholderName'=>['required'],
             'expirationDate'=>['required'],
             'securityCode' => ['required','integer'],
-            'cardNo' => ['required','integer'],
+            'cardNo' => ['required','numeric','digits:16'],
             'zip' => ['required','integer'],
         ]);
 

@@ -6,6 +6,9 @@ use App\Models\doctor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\Password;
+use Illuminate\Support\Facades\Hash;
+use Storage;
+
 
 class DoctorController extends Controller
 {
@@ -23,38 +26,59 @@ class DoctorController extends Controller
     public function showdoctorpage($id)
     {
         $doctor = doctor::where('id', $id)->get();
-        $appointmentsAndusers = DB::table('appointment')->join('users', 'appointment.user_id', '=', 'users.id')->where('appointment.doctor_id' , $id)->get();
+        // dd($doctor[0]->certificate);
+        $appointmentsAndusers = DB::table('users')->join('appointment', 'appointment.user_id', '=', 'users.id')->where('appointment.doctor_id', $id)->get();
 
-        return view('doctorpage' , ['id' => $id , 'doctor' => $doctor , 'appointmentsAndusers' => $appointmentsAndusers]);
+        return view('doctorpage', ['id' => $id, 'doctor' => $doctor, 'appointmentsAndusers' => $appointmentsAndusers]);
     }
 
-    public function editdoctorinfo($id){
+    public function editdoctorinfo($id)
+    {
         $doctor = doctor::where('id', $id)->get();
-        return view('editDocProfile' ,['id' => $id , 'doctor'=>$doctor]);
+        return view('editDocProfile', ['id' => $id, 'doctor' => $doctor]);
     }
 
-    public function updateDoctorProfile(Request $request, $id){
+    public function updateDoctorProfile(Request $request, $id)
+    {
+
+
 
         $request->validate([
             'Name' => ['required', 'string', 'max:255'],
             'Email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'Personal'=>['required'],
-            'Certificate'=>['required'],
-            'Available'=>['required'],
+            'Available' => ['required'],
             'Password' => ['required'],
 
-            
+
         ]);
-
-        $image = base64_encode(file_get_contents($request->file('image')));
-        $Certificate = base64_encode(file_get_contents($request->file('Certificate')));
-
-        doctor::where('id', $id)->update(['name' => request('Name'), 'email' => request('Email'), 'password' => request('Password'), 'available_time' => request('Available'), 'image' => $image, 'certificate' => $Certificate ]);
-
-        return redirect("/doctorprofile/$id")->with('mssg', 'Personal information updated successfully');
-    
+        if ($request->file('Personal') && $request->file('Certificate')) {
 
 
+            $image = base64_encode(file_get_contents($request->file('Personal')));
+            $Certificate = base64_encode(file_get_contents($request->file('Certificate')));
+
+            doctor::where('id', $id)->update(['name' => request('Name'), 'email' => request('Email'), 'password' => Hash::make($request->password), 'available_time' => request('Available'), 'image' => $image, 'certificate' => $Certificate]);
+
+            return redirect("/doctorprofile/$id")->with('mssg', 'Personal information updated successfully');
+
+         }elseif ($request->file('Personal')) {
+
+            $image = base64_encode(file_get_contents($request->file('Personal')));
+
+
+            doctor::where('id', $id)->update(['name' => request('Name'), 'email' => request('Email'), 'password' => Hash::make($request->password), 'available_time' => request('Available'), 'image' => $image]);
+
+            return redirect("/doctorprofile/$id")->with('mssg', 'Personal information updated successfully');
+        } elseif ($request->file('Certificate')) {
+
+            $Certificate = base64_encode(file_get_contents($request->file('Certificate')));
+
+
+
+            doctor::where('id', $id)->update(['name' => request('Name'), 'email' => request('Email'), 'password' => Hash::make($request->password), 'available_time' => request('Available'), 'certificate' => $Certificate]);
+
+            return redirect("/doctorprofile/$id")->with('mssg', 'Personal information updated successfully');
+        }
     }
 
     /**

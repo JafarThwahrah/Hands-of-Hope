@@ -120,6 +120,7 @@ Route::get('/test', function () {
 //Donation
 Route::post('donationForm' , [DonationController::class, 'store']);
 Route::get('/donation', function () {
+    
     return  view('donation');
 });
 

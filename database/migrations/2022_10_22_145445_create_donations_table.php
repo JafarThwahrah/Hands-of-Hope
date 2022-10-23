@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('emailDon');
-            $table->integer('cardNo');
+            $table->bigInteger('cardNo');
             $table->integer('securityCode');
             $table->date('expirationDate');
             $table->string('cardholderName');
