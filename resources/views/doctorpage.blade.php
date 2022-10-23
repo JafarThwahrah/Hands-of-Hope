@@ -4,8 +4,8 @@
 
 
     <link rel="stylesheet" href="{{asset('style/profileStyle.css')}}">
-
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.css" rel="stylesheet" />
+
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
@@ -55,27 +55,27 @@
               <div class="row">
                 <div class="biosection1 col-md-12">
                   <div class="bio-row">
-                      <p><span>Name </span>: {{$doctorinfo->name}}</p>
+                      <h5>Name: {{$doctorinfo->name}}</h5>
                   </div>
                   <div class="bio-row">
-                      <p><span>Availalbe Time </span>: {{$doctorinfo->available_time}}</p>
+                      <h5>Availalbe Time: {{$doctorinfo->available_time}}</h5>
                   </div>
                   <div class="bio-row">
-                    <p><span>Email </span>:  {{$doctorinfo->email}}</p>
+                    <h5>Email:  {{$doctorinfo->email}}</h5>
 
                   </div>
                   <div class="bio-row">
-                      <p><span>Birthday</span>: 13 July 1983</p>
+                     <h5> Birthday: 13 July 1983</h5>
                   </div>
                 </div>
 
                 <div class="biosection1 col-md-12">
 
                   <div class="bio-row">
-                    <p><span>Mobile </span>: 0785631487</p>
+                    <h5>  Mobile: 0785631487 </h5>
                 </div>
                   <div class="bio-row">
-                      <p><span>Certificate </span>  {{$doctorinfo->cetrificate}}</p>
+                     <h5> Certificate:   {{$doctorinfo->certificate[1]}}.jpg</h5>
                   </div>
                  
                  
@@ -98,7 +98,6 @@
                     <thead class="">
                         <th><h5>Appointment Number</h5></th>
                         <th><h5>Date</h5></th>
-                        <th><h5>Time</h5></th>
                         <th><h5>Patient Name</h5></th>
 
                     </thead>
@@ -110,7 +109,6 @@
                             <tr class="">
                                 <td class="">{{$appointment->id}}</td>
                                 <td class="">{{$appointment->appointment_time}}</td>
-                                <td class="">07:25AM</td>
                                 <td class="">{{$appointment->name}}</td>
 
 

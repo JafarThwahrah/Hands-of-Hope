@@ -9,6 +9,8 @@ use App\Models\Order;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+
 
 class UserController extends Controller
 {
@@ -25,8 +27,8 @@ class UserController extends Controller
     public function showuserpage($id)
     {
         $User = User::where('id', $id)->get();
-        $appointmentsAndDoctors = DB::table('appointment')->join('doctors', 'appointment.doctor_id', '=', 'doctors.id')->where('appointment.user_id' , $id)->get();
-        $orders = DB::table('orders')->join('products', 'orders.product_id', '=', 'products.id')->where('orders.user_id' , $id)->get();
+        $appointmentsAndDoctors = DB::table('doctors')->join('appointment', 'appointment.doctor_id', '=', 'doctors.id')->where('appointment.user_id' , $id)->get();
+        $orders = DB::table('products')->join('orders', 'orders.product_id', '=', 'products.id')->where('orders.user_id' , $id)->get();
 // dd($orders);
 
         return view('profile' ,  ['id' => $id, 'User' => $User , 'appointments' => $appointmentsAndDoctors , 'orders' => $orders]);
@@ -47,9 +49,9 @@ class UserController extends Controller
             
         ]);
 
-        
-
-        User::where('id', $id)->update(['name' => request('Name'), 'email' => request('Email'), 'password' => request('Password')]);
+        // Hash::make($request->password)
+$Password = request('Password');
+        User::where('id', $id)->update(['name' => request('Name'), 'email' => request('Email'), 'password' => Hash::make($request->password)]);
 
         return redirect("/userprofile/$id")->with('mssg', 'Personal information updated successfully');
     
@@ -68,6 +70,9 @@ class UserController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'],
+            'subject' => ['required', 'string'],
+            'message' => ['required', 'string'],
+
         ]);
        
 
