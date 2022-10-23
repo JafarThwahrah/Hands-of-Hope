@@ -3,10 +3,21 @@
 
 <head>
     <meta charset="utf-8">
-    <title>HOPE - MIDICINE CHARITY</title>
+    <title>HOPE - MEDICINE CHARITY</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"
+            type="text/javascript"></script>
+
+    <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/148866/reset.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="stylesheet" href="{{asset('style/login.css')}}">
+
+
     @yield('style')
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
@@ -23,7 +34,7 @@
 
     <!-- Libraries Stylesheet -->
     <link href="{{asset('lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
-    <link href="{{asset('lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css')}}" rel="stylesheet" />
+    <link href="{{asset('lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css')}}" rel="stylesheet"/>
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{asset('style/bootstrap.min.css')}}" rel="stylesheet">
@@ -37,16 +48,18 @@
 
 @php
 
-use App\Models\departments;
-    $Department = departments::all();
+    use App\Models\departments;
+        $Department = departments::all();
 @endphp
 
-<!-- Navbar Start -->
+    <!-- Navbar Start -->
 <div class="container-fluid sticky-top bg-white shadow-sm">
     <div class="container">
         <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
-            <a href="/" class="navbar-brand">         <img src="https://243515-1941852-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2015/05/Hands-of-Hope-logo.png" alt="hope" width="200px" height="110px">  
-               
+            <a href="/" class="navbar-brand"> <img
+                    src="https://243515-1941852-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2015/05/Hands-of-Hope-logo.png"
+                    alt="hope" width="200px" height="110px">
+
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
@@ -54,7 +67,7 @@ use App\Models\departments;
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
                     <a href="/" class="nav-item nav-link ">Home</a>
-                    
+
                     <a href="/about" class="nav-item nav-link">About</a>
                     {{-- <a href="/product" class="nav-item nav-link">Medicine & Pharmacy</a> --}}
                     <div class="nav-item dropdown">
@@ -62,20 +75,24 @@ use App\Models\departments;
                         <div class="dropdown-menu m-0">
                             @foreach($Department as $department)
 
-                            <a href="{{route('appointmentPage',$department['id'])}}" class="dropdown-item">{{$department['name']}}</a>
+                                <a href="{{route('appointmentPage',$department['id'])}}"
+                                   class="dropdown-item">{{$department['name']}}</a>
                             @endforeach
 
-                         
+
                         </div>
                     </div>
-                    
+
                     <a href="/donation" class="nav-item nav-link ">Donation</a>
                     <a href="/product" class="nav-item nav-link">Products</a>
                     @auth
-                    <a href="/profile" class="nav-item nav-link">Profile</a>
+                        <a href="/profile" class="nav-item nav-link">Profile</a>
                     @endauth
                     @guest
-                    <a href="/register" class="nav-item nav-link ">Login/Register</a>
+                        <!-- inser more links here -->
+                        <span class="main-nav">
+                            <a href="#0" class="nav-item nav-link cd-signup">Sign up</a>
+                        </span>
                     @endguest
                 </div>
             </div>
@@ -84,7 +101,7 @@ use App\Models\departments;
 </div>
 <!-- Navbar End -->
 
-
+@include('loginform')
 @yield('content')
 
 <!-- Footer Start -->
@@ -93,7 +110,7 @@ use App\Models\departments;
         <div class="row ">
             <div class="col-lg-4 col-md-6">
                 <h4 class="d-inline-block text-primary text-uppercase border-bottom border-5 border-secondary mb-4">
-                   keep In Touch</h4>
+                    keep In Touch</h4>
                 <p class="mb-4">we will be very happy to hear anything from you!</p>
                 <p class="mb-2"><i class="fa fa-map-marker-alt text-primary me-3"></i>Macca Street, Amman, Jordan</p>
                 <p class="mb-2"><i class="fa fa-envelope text-primary me-3"></i>HandsOFHope@gmail.com</p>
@@ -117,7 +134,7 @@ use App\Models\departments;
                         <button class="btn btn-primary">Subsicribe</button>
                     </div>
                 </form>
-          
+
             </div>
         </div>
     </div>
@@ -148,6 +165,11 @@ use App\Models\departments;
 <script src="{{asset('lib/tempusdominus/js/moment.min.js')}}"></script>
 <script src="{{asset('lib/tempusdominus/js/moment-timezone.min.js')}}"></script>
 <script src="{{asset('lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js')}}"></script>
+
+
+<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src="{{asset('js/login.js')}}"></script>
+
 
 @yield('javascript')
 <!-- Template Javascript -->
