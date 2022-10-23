@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('password');
             $table->binary('image');
             $table->binary('certificate');
-            $table->string('available_time');
+            $table->date('available_time');
             $table->string('overview');
             $table->foreignId('department_id')->constrained()->onDelete('cascade');
             $table->string('status')->default('pendding');

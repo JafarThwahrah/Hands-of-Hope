@@ -31,21 +31,22 @@
                 </div>
                 <div class="row g-5">
                     @foreach($Department as $department)
-                    <div class="col-lg-4 col-md-6">
-                        <div
-                            class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
-                            <div class="service-icon mb-4">
-                                <i class="fa fa-2x fa-user-md text-white"></i>
+                        <div class="col-lg-4 col-md-6">
+                            <div
+                                class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
+                                <div class="service-icon mb-4">
+                                    <i class="fa fa-2x fa-user-md text-white"></i>
+                                </div>
+                                <h4 class="mb-3">{{$department['name']}}</h4>
+
+                                <p class="m-0">{{$department['description']}}</p>
+                                <a class="btn btn-lg btn-primary rounded-pill"
+                                   href='/appointment/{{$department['id']}}'>
+
+                                    <i class="bi bi-arrow-right"></i>
+                                </a>
                             </div>
-                            <h4 class="mb-3">{{$department['name']}}</h4>
-
-                            <p class="m-0">{{$department['description']}}</p>
-                            <a class="btn btn-lg btn-primary rounded-pill" href='/appointment/{{$department['id']}}'>
-
-                                <i class="bi bi-arrow-right"></i>
-                            </a>
                         </div>
-                    </div>
                     @endforeach
                 </div>
             </div>
@@ -86,13 +87,8 @@
                 <h1 class="display-4">Qualified Healthcare Professionals</h1>
             </div>
             <div class="owl-carousel team-carousel position-relative">
-                <div class="owl-nav">
-                    <div class="owl-prev"><i class="bi bi-arrow-left"></i></div>
-                    <div class="owl-next"><i class="bi bi-arrow-right"></i></div>
-                </div>
                 <div class="owl-dots disabled"></div>
                 @foreach($doctors as $doctor)
-
                     <div class="team-item">
                         <div class="row g-0 bg-light rounded overflow-hidden">
                             <div class="col-12 col-sm-5 h-100">
@@ -119,8 +115,8 @@
                                 </div>
                             </div>
                         </div>
+                        @endforeach
                     </div>
-                @endforeach
             </div>
         </div>
     </div>
