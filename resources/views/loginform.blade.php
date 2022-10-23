@@ -16,7 +16,7 @@
                 <div>
                     <p class="fieldset">
                         <label class="image-replace cd-username" for="signup-username">Username</label>
-                        <x-text-input id="email" placeholder="Email"
+                        <x-text-input id="emailLogin" placeholder="Email"
                                       class="block mt-1 w-full full-width has-padding has-border" type="email"
                                       name="email" :value="old('email')" required autofocus/>
 
@@ -30,7 +30,7 @@
 
                         <label class="image-replace cd-password" for="signup-password">Password</label>
 
-                        <x-text-input id="password" class="block mt-1 w-full"
+                        <x-text-input id="passwordLogin" class="block mt-1 w-full"
                                       type="password"
                                       name="password"
                                       required autocomplete="current-password"
@@ -68,17 +68,16 @@
 
                 <!-- Name -->
                 <div>
-                    <x-input-label for="name" :value="__('Name')" />
-
-                    <x-text-input id="name" class="full-width has-padding has-border" type="text" name="name" :value="old('name')" required autofocus />
-
-                    <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                    <x-input-label for="name" :value="__('Name')"/>           
+                    <span style="color:red" id="NameErr">* </span>     
+                    <x-text-input id="name" class="full-width has-padding has-border " type="text" name="name" :value="old('name')" required autofocus />
+                    <x-input-error :messages="$errors->get('name')" class="mt-2"  />
                 </div>
 
                 <!-- Email Address -->
                 <div class="mt-4">
                     <x-input-label for="email" :value="__('Email')" />
-
+                    {{-- <span style="color:red" id="NameErr">* </span>      --}}
                     <x-text-input id="email" class="full-width has-padding has-border" type="email" name="email" :value="old('email')" required />
 
                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
@@ -87,7 +86,7 @@
                 <!-- Password -->
                 <div class="mt-4">
                     <x-input-label for="password" :value="__('Password')" />
-
+                    <span style="color:red" id="spanPassword">* </span>    
                     <x-text-input id="password" class="full-width has-padding has-border"
                                   type="password"
                                   name="password"
@@ -99,7 +98,7 @@
                 <!-- Confirm Password -->
                 <div class="mt-4">
                     <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
+                    <span style="color:red" id="spanCPassword">* </span>    
                     <x-text-input id="password_confirmation" class="full-width has-padding has-border"
                                   type="password"
                                   name="password_confirmation" required />
@@ -108,11 +107,11 @@
                 </div>
 
                 <div class="flex items-center justify-end mt-4">
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
+                    {{-- <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
                         {{ __('Already registered?') }}
-                    </a>
+                    </a> --}}
 
-                    <x-primary-button class="ml-4">
+                    <x-primary-button class="ml-4" style="background-color:#2f889a; width:100%">
                         {{ __('Register') }}
                     </x-primary-button>
                 </div>
@@ -124,3 +123,6 @@
         <a href="#0" class="cd-close-form">Close</a>
     </div> <!-- cd-user-modal-container -->
 </div> <!-- cd-user-modal -->
+
+
+<script src="{{asset('js/validation.js')}}"></script>
