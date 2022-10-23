@@ -4,7 +4,7 @@
     <x-guest-layout>
         <x-auth-card>
             <x-slot name="logo">
-                <div class="h3">Login as User</div>
+                <div class="h3">Login as Doctor</div>
             </x-slot>
 
             <!-- Session Status -->

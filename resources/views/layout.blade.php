@@ -38,7 +38,7 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{asset('style/bootstrap.min.css')}}" rel="stylesheet">
-    
+
 
     <!-- Template Stylesheet -->
     <link href="{{asset('style/style.css')}}" rel="stylesheet">
@@ -90,9 +90,16 @@
                     @endauth
                     @guest
                         <!-- inser more links here -->
-                        <span class="main-nav">
-                            <a href="#0" class="nav-item nav-link cd-signup">Sign up</a>
-                        </span>
+                        <div class="dropdown">
+                            <a class="nav-item nav-link" type="button" id="dropdownMenuButton1"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                Login/Register
+                            </a>
+                            <ul class="dropdown-menu main-nav" aria-labelledby="dropdownMenuButton1">
+                                <li><a href="/login" class="nav-item nav-link">As User</a></li>
+                                <li><a class="nav-item nav-link " href="/registerDoctor">As Doctor</a></li>
+                            </ul>
+                        </div>
                     @endguest
                 </div>
             </div>
@@ -101,7 +108,8 @@
 </div>
 <!-- Navbar End -->
 
-@include('loginform')
+{{--@include('loginform')--}}
+{{--@include('loginformdoctor')--}}
 @yield('content')
 
 <!-- Footer Start -->
