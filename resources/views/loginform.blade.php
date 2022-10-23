@@ -63,37 +63,59 @@
 
         <div id="cd-signup">
             <!-- sign up form -->
-            <form class="cd-form">
-                <p class="fieldset">
-                    <label class="image-replace cd-username" for="signup-username">Username</label>
-                    <input class="full-width has-padding has-border" id="signup-username" type="text"
-                           placeholder="Username">
-                    <span class="cd-error-message">Error message here!</span>
-                </p>
+            <form method="POST"  class="cd-form" action="{{ route('register') }}">
+                @csrf
 
-                <p class="fieldset">
-                    <label class="image-replace cd-email" for="signup-email">E-mail</label>
-                    <input class="full-width has-padding has-border" id="signup-email" type="email"
-                           placeholder="E-mail">
-                    <span class="cd-error-message">Error message here!</span>
-                </p>
+                <!-- Name -->
+                <div>
+                    <x-input-label for="name" :value="__('Name')" />
 
-                <p class="fieldset">
-                    <label class="image-replace cd-password" for="signup-password">Password</label>
-                    <input class="full-width has-padding has-border" id="signup-password" type="text"
-                           placeholder="Password">
-                    <a href="#0" class="hide-password">Hide</a>
-                    <span class="cd-error-message">Error message here!</span>
-                </p>
+                    <x-text-input id="name" class="full-width has-padding has-border" type="text" name="name" :value="old('name')" required autofocus />
 
-                <p class="fieldset">
-                    <input type="checkbox" id="accept-terms">
-                    <label for="accept-terms">I agree to the <a href="#0">Terms</a></label>
-                </p>
+                    <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                </div>
 
-                <p class="fieldset">
-                    <input class="full-width has-padding" type="submit" value="Create account">
-                </p>
+                <!-- Email Address -->
+                <div class="mt-4">
+                    <x-input-label for="email" :value="__('Email')" />
+
+                    <x-text-input id="email" class="full-width has-padding has-border" type="email" name="email" :value="old('email')" required />
+
+                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                </div>
+
+                <!-- Password -->
+                <div class="mt-4">
+                    <x-input-label for="password" :value="__('Password')" />
+
+                    <x-text-input id="password" class="full-width has-padding has-border"
+                                  type="password"
+                                  name="password"
+                                  required autocomplete="new-password" />
+
+                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="mt-4">
+                    <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+
+                    <x-text-input id="password_confirmation" class="full-width has-padding has-border"
+                                  type="password"
+                                  name="password_confirmation" required />
+
+                    <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                </div>
+
+                <div class="flex items-center justify-end mt-4">
+                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
+                        {{ __('Already registered?') }}
+                    </a>
+
+                    <x-primary-button class="ml-4">
+                        {{ __('Register') }}
+                    </x-primary-button>
+                </div>
             </form>
 
             <!-- <a href="#0" class="cd-close-form">Close</a> -->
