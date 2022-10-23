@@ -9,10 +9,10 @@
                 <div class="row justify-content-start">
                     <div class="col-lg-8 text-center text-lg-start">
                         <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5"
-                            style="border-color: rgba(256, 256, 256, .3) !important;">Welcome To Medinova</h5>
+                            style="border-color: rgba(256, 256, 256, .3) !important;">Welcome To Hands OF Hope</h5>
                         <h1 class="display-1 text-white mb-md-4">Best Healthcare Solution In Your City</h1>
                         <div class="pt-2">
-                            <a href="" class="btn btn-light rounded-pill py-md-3 px-md-5 mx-2">Find Doctor</a>
+                            {{-- <a href="" class="btn btn-light rounded-pill py-md-3 px-md-5 mx-2">Find Doctor</a> --}}
                             <a href=""
                                 class="btn btn-outline-light rounded-pill py-md-3 px-md-5 mx-2">Appointment</a>
                         </div>
@@ -40,8 +40,7 @@
                                 <i class="fa fa-2x fa-user-md text-white"></i>
                             </div>
                             <h4 class="mb-3">Children's Services</h4>
-                            <p class="m-0">Kasd dolor no lorem nonumy sit labore tempor at justo rebum rebum stet, justo
-                                elitr dolor amet sit</p>
+                            <p class="m-0">We understand that when your child is unwell it can be a worrying time, and we will always endeavour to see children as soon as possible you can be sure of getting a same day</p>
                             <a class="btn btn-lg btn-primary rounded-pill" href='/appointment'>
                                 <i class="bi bi-arrow-right"></i>
                             </a>
@@ -54,8 +53,7 @@
                                 <i class="fa fa-2x fa-procedures text-white"></i>
                             </div>
                             <h4 class="mb-3">Operation &amp; Surgery</h4>
-                            <p class="m-0">Kasd dolor no lorem nonumy sit labore tempor at justo rebum rebum stet, justo
-                                elitr dolor amet sit</p>
+                            <p class="m-0">Surgery is an invasive technique with the fundamental principle of physical intervention on organs organ systemstissues for diagnostic or therapeutic reasons.As a general rule</p>
                             <a class="btn btn-lg btn-primary rounded-pill" href="/appointment">
                                 <i class="bi bi-arrow-right"></i>
                             </a>
@@ -68,8 +66,7 @@
                                 <i class="fa fa-2x fa-stethoscope text-white"></i>
                             </div>
                             <h4 class="mb-3">Cancer Care</h4>
-                            <p class="m-0">Kasd dolor no lorem nonumy sit labore tempor at justo rebum rebum stet, justo
-                                elitr dolor amet sit</p>
+                            <p class="m-0">CancerCare oncology social workers help people living with cancer, post-treatment survivors and caregivers address barriers to care </p>
                             <a class="btn btn-lg btn-primary rounded-pill" href="/appointment">
                                 <i class="bi bi-arrow-right"></i>
                             </a>
@@ -81,9 +78,8 @@
                             <div class="service-icon mb-4">
                                 <i class="fa fa-2x fa-heart text-white"></i>
                             </div>
-                            <h4 class="mb-3">Spiritual Care Services</h4>
-                            <p class="m-0">Kasd dolor no lorem nonumy sit labore tempor at justo rebum rebum stet, justo
-                                elitr dolor amet sit</p>
+                            <h4 class="mb-3">Dental Treatments </h4>
+                            <p class="m-0"> your dentist should ask questions about your general health and medications.When it comes to dental treatments, it might sometimes sound like your dental benefit plan is speaking  </p>
                             <a class="btn btn-lg btn-primary rounded-pill" href="/appointment">
                                 <i class="bi bi-arrow-right"></i>
                             </a>
@@ -96,8 +92,7 @@
                                 <i class="fa fa-2x fa-pills text-white"></i>
                             </div>
                             <h4 class="mb-3">Medicine &amp; Pharmacy</h4>
-                            <p class="m-0">Kasd dolor no lorem nonumy sit labore tempor at justo rebum rebum stet, justo
-                                elitr dolor amet sit</p>
+                            <p class="m-0">A pharmacy medicine, also known as a P-medicine is a medicine that can only be bought from a pharmacy either online or in-store, like LloydsPharmacy. Pharmacy medicines</p>
                             <a class="btn btn-lg btn-primary rounded-pill" href="/appointment">
                                 <i class="bi bi-arrow-right"></i>
                             </a>
@@ -110,8 +105,7 @@
                                 <i class="fa fa-2x fa-microscope text-white"></i>
                             </div>
                             <h4 class="mb-3">Laboratory Services</h4>
-                            <p class="m-0">Kasd dolor no lorem nonumy sit labore tempor at justo rebum rebum stet, justo
-                                elitr dolor amet sit</p>
+                            <p class="m-0">Our laboratory continues to lead the way in the introduction of new tests as guided by feedback from our physicians and other professionals. Our laboratory continues to lead being the very </p>
                             <a class="btn btn-lg btn-primary rounded-pill" href="/appointment">
                                 <i class="bi bi-arrow-right"></i>
                             </a>
@@ -147,13 +141,13 @@
                 <h1 class="display-4">Medical Products</h1>
             </div>
             <div class="owl-carousel price-carousel position-relative" style="padding: 0 45px 45px 45px;">
-            
+
                 @foreach ($products as $product)
 
                 <div class="bg-light rounded text-center m-3">
                     <div class="position-relative">
                         <img class="img-fluid rounded-top" src="data:image/jpg;charset=utf8;base64,{{$product['image']}}" alt="0000000">
-                    
+
                     </div>
                     <div class="text-center py-5 m-5">
                         <h3>{{$product['name']}}</h3>
@@ -161,10 +155,10 @@
                         <a href="order/{{$product['id']}}" class="btn btn-primary rounded-pill py-3 px-5 my-2">Apply Now</a>
                     </div>
                 </div>
-                
-        
+
+
                 @endforeach
-        
+
 
 
 
@@ -192,7 +186,7 @@
             <div class="owl-carousel team-carousel position-relative">
 
 
-                
+
                 <div class="owl-nav">
                 <div class="owl-prev"><i class="bi bi-arrow-left"></i></div>
                 <div class="owl-next"><i class="bi bi-arrow-right"></i></div>
