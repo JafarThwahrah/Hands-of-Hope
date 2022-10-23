@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\departments;
 use App\Models\doctor;
 use App\Models\product;
+use App\Models\departments;
+use App\Models\Testimonial;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -18,12 +19,6 @@ class Controller extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $products=product::all();
-        $doctor=doctor::all();
-      return view('Home.index',['products'=>$products,'doctors'=>$doctor]);
-    }
 
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 }
