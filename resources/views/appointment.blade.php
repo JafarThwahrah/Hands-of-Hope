@@ -31,15 +31,11 @@
                         <form action="{{route('appointmentStore', $id)}}" method="POST">
 
                             @csrf
+                            @php
 
+                            $user = Auth::user();
+                        @endphp
                             <div class="row g-3">
-                                {{-- <div class="col-12 col-sm-6">
-                                    <select class="form-select bg-light border-0" style="height: 55px;">
-                                        <option value="1">Department 1</option>
-                                        <option value="2">Department 2</option>
-                                        <option value="3">Department 3</option>
-                                    </select>
-                                </div> --}}
                                 <div class="col-12 col-sm-12">
                                     <label class="mb-2" for="Availability"> Select Date</label>
                                     <select class="form-select bg-light border-0" id="Availability" name="time" style="height: 55px;">
@@ -52,12 +48,14 @@ x                                        @foreach($availableForDepartment as $av
                                        
                                     </select>
                                 </div>
-                                <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control bg-light border-0" name="name" placeholder="Your Name"
+              
+
+                                <div class="col-12 col-sm-12">
+                                    <input type="text" class="form-control bg-light border-0" value="{{$user['name']}}" name="name" placeholder="Your Name"
                                         style="height: 55px;">
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <input type="email" class="form-control bg-light border-0" name="email" placeholder="Your Email"
+                                    <input type="email" class="form-control bg-light border-0" value="{{$user['email']}}" name="email" hidden placeholder="Your Email"
                                         style="height: 55px;">
                                 </div>
                                

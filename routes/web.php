@@ -68,9 +68,7 @@ Route::get('/Contact', function () {
 //});
 
 // appointment
-Route::get('/appointment/{id}', function () {
-    return  view('appointment');
-});
+
 Route::get('/appointment/{id}' , [AppointmentController::class, 'appointmentPage'])->name('appointmentPage');
 Route::post('/appointment/store/{id}' , [AppointmentController::class, 'appointmentStore'])->name('appointmentStore');
 
@@ -121,6 +119,8 @@ Route::get('/admin/deleteProduct/{id}',[AdminController::class,'deleteProduct'])
 Route::get('/admin/allAppointment',[AdminController::class,'allAppointment']);
 Route::get('/admin/deleteAppointment/{id}',[AdminController::class,'deleteAppointment']);
 Route::get('/admin/editAppointment/{id}',[AdminController::class,'editAppointment']);
+
+Route::get('/admin/allDepartments',[AdminController::class,'allDepartments']);
 
 
 // contact page

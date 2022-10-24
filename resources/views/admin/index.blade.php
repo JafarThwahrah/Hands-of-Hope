@@ -10,12 +10,15 @@
           integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <!-- bootstrap 5 css -->
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous"/>
     <!-- BOX ICONS CSS-->
     <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" rel="stylesheet"/>
     <!-- custom css -->
     <link rel="stylesheet" href="{{asset('style/admin.css')}}"/>
+    @yield('style')
+
 </head>
 
 <body>
@@ -34,6 +37,11 @@
             <span class="mx-2" style="color:#1D2A4D;">All Users</span>
         </a>
 
+        <a href="/admin/allDepartments" class="nav-link">
+            <box-icon type='solid' name='building-house' style="color:#1D2A4D; height:20px; width:15px;"></box-icon>
+            <span class="mx-2" style="color:#1D2A4D;">All Departments</span>
+        </a>
+
         <a href="/admin/allDoctor" class="nav-link">
             <i class="bx bx-conversation" style="color:#1D2A4D;"></i>
             <span class="mx-2" style="color:#1D2A4D;">All Doctors</span>
@@ -50,21 +58,21 @@
             <i class='bx bx-package' style="color:#1D2A4D;"></i>
             <span class="mx-2" style="color:#1D2A4D;">All Order</span>
         </a>
+        <a href="/" class="nav-link">
+            <i class="fa-solid fa-arrow-left" style="color:#1D2A4D;"></i>
+            <span class="mx-2" style="color:#1D2A4D;">Home Page</span>
+        </a>
     </ul>
 
 
-    <span href="#" class="nav-link h4 w-100 mb-5">
-      <a href=""><i class="bx bxl-instagram-alt text-white"></i></a>
-      <a href=""><i class="bx bxl-twitter px-2 text-white"></i></a>
-      <a href=""><i class="bx bxl-facebook text-white"></i></a>
-    </span>
+
 </div>
 
 <!-- Main Wrapper -->
 <div class="p-1 my-container active-cont">
     <!-- Top Nav -->
     <nav class="navbar top-navbar navbar-light bg-light px-5">
-        <a class="btn border-0" id="menu-btn"><i class="bx bx-menu"></i></a>
+        {{-- <a class="btn border-0" id="menu-btn"><i class="bx bx-menu"></i></a> --}}
     </nav>
     @yield('content')
 </div>
@@ -77,6 +85,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
         crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    
 </body>
 
 </html>

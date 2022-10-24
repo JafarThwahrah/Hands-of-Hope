@@ -21,6 +21,7 @@ class AppointmentController extends Controller
 
     public function appointmentPage($id)
     {
+
         $availableForDepartment = doctor::where('department_id', $id)->get();
         return view('appointment', ['id' => $id, 'availableForDepartment' => $availableForDepartment]);
     }

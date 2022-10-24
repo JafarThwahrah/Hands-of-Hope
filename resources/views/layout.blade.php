@@ -48,8 +48,9 @@
 
 @php
 
-    use App\Models\departments;
-        $Department = departments::all();
+use App\Models\departments;
+    $Department = departments::all();
+    $user = Auth::user();
 @endphp
 
     <!-- Navbar Start -->
@@ -69,7 +70,6 @@
                     <a href="/" class="nav-item nav-link ">Home</a>
 
                     <a href="/about" class="nav-item nav-link">About</a>
-                    {{-- <a href="/product" class="nav-item nav-link">Medicine & Pharmacy</a> --}}
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Departments</a>
                         <div class="dropdown-menu m-0">
@@ -86,7 +86,7 @@
                     <a href="/donation" class="nav-item nav-link ">Donation</a>
                     <a href="/product" class="nav-item nav-link">Products</a>
                     @auth
-                        <a href="/profile" class="nav-item nav-link">Profile</a>
+                    <a href="/userprofile/{{$user['id']}}" class="nav-item nav-link">Profile</a>
                     @endauth
                     @guest
                         <!-- inser more links here -->

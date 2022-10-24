@@ -12,6 +12,7 @@ class DepartmentsController extends Controller
 {
     public function index()
     {
+        
         $Departments = departments::all();
         $products = product::all();
         $doctor = doctor::all();

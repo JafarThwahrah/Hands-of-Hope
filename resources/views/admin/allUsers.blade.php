@@ -3,10 +3,12 @@
 @section('content')
     <div class="m-5">
         <div class="d-flex justify-content-between">
-            <div class="h4">All Users</div>
+            <div class="h4" style="color:green">All Users</div>
         </div>
-        <table class="table text-center">
-            <thead>
+        <table class="table text-center  table-hover
+
+        ">
+            <thead style="color: #1D2A4D;">
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Name</th>
@@ -15,7 +17,7 @@
                 <th scope="col">Actions</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody style="color:#354F8E">
             @foreach($allUsers as $user)
                 <tr>
                     <th scope="row">{{$user['id']}}</th>
@@ -24,53 +26,13 @@
                     <td>{{$user['role']}}</td>
                     <td>
                         <div>
-                            <a class="fa-solid fa-user-pen me-2" href="editUser/{{$user['id']}}"></a>
-                            <a class="fa-solid fa-trash" onclick="deleteUser(this,{{$user['id']}})"></a>
+                            <a class="fa-solid fa-user-pen me-2" style="color:green" href="editUser/{{$user['id']}}"></a>
+                            <a class="fa-solid fa-trash" style="color: red" onclick="deleteUser(this,{{$user['id']}})"></a>
                         </div>
                     </td>
                 </tr>
             @endforeach
             </tbody>
         </table>
-
-
-        {{--        <br>--}}
-        {{--        <div class="d-flex justify-content-between">--}}
-        {{--            <div class="h4">All Product</div>--}}
-        {{--            <a class="btn" href="">View All</a>--}}
-        {{--        </div>--}}
-        {{--        <table class="table">--}}
-        {{--            <thead>--}}
-        {{--            <tr>--}}
-        {{--                <th scope="col">#</th>--}}
-        {{--                <th scope="col">First</th>--}}
-        {{--                <th scope="col">Last</th>--}}
-        {{--                <th scope="col">Handle</th>--}}
-        {{--            </tr>--}}
-        {{--            </thead>--}}
-        {{--            <tbody>--}}
-        {{--            <tr>--}}
-        {{--                <th scope="row">1</th>--}}
-        {{--                <td>Mark</td>--}}
-        {{--                <td>Otto</td>--}}
-        {{--                <td>@mdo</td>--}}
-        {{--            </tr>--}}
-        {{--            <tr>--}}
-        {{--                <th scope="row">2</th>--}}
-        {{--                <td>Jacob</td>--}}
-        {{--                <td>Thornton</td>--}}
-        {{--                <td>@fat</td>--}}
-        {{--            </tr>--}}
-        {{--            <tr>--}}
-        {{--                <th scope="row">3</th>--}}
-        {{--                <td colspan="2">Larry the Bird</td>--}}
-        {{--                <td>@twitter</td>--}}
-        {{--            </tr>--}}
-        {{--            </tbody>--}}
-        {{--        </table>--}}
-
-        <!-- Modal -->
-
     </div>
-
 @endsection

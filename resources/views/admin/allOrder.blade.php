@@ -1,65 +1,75 @@
 @extends('admin.index')
 {{--box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;--}}
 @section('content')
-<div class="w-100 d-flex gap-2">
-    <div class="card" style="width: 18rem; box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;">
-        <div class="card-body">
-            <h5 class="card-title text-center">Order</h5>
-            <p class="card-text text-center h4">{{count($allOrders)}} Orders</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-xl-4">
+            <div class="card bg-c-blue order-card">
+                <div class="card-block">
+                    <h6 class="m-b-20">Total number of Orders</h6>
+                    <p class="m-b-0"><span class="f-right">{{count($allOrders)}} Orders</span></p>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="card" style="width: 18rem; box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;">
-        <div class="card-body">
-            <h5 class="card-title text-center">Approved Count</h5>
-            <p class="card-text text-center h4">{{count($approved)}} Orders</p>
+
+        <div class="col-md-4 col-xl-4">
+            <div class="card bg-c-green order-card">
+                <div class="card-block">
+                    <h6 class="m-b-20">Approved Orders</h6>
+                    <p class="m-b-0"> <span class="f-right">{{count($approved)}} Orders</span></p>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="card" style="width: 18rem; box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;">
-        <div class="card-body">
-            <h5 class="card-title text-center">Pending Count</h5>
-            <p class="card-text text-center h4">{{count($pending)}} Orders</p>
+
+        <div class="col-md-4 col-xl-4">
+            <div class="card bg-c-yellow order-card">
+                <div class="card-block">
+                    <h6 class="m-b-20">Pending Orders</h6>
+                    <p class="m-b-0"><span class="f-right">{{count($pending)}} Orders</span></p>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-<div>
+
     <br>
 
-        <table class="table text-center">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">user_id</th>
-                <th scope="col">product_id</th>
-                <th scope="col">national</th>
-                <th scope="col">phone</th>
-                <th scope="col">address</th>
-                <th scope="col">city</th>
-                <th scope="col">status</th>
-                <th scope="col">Actions</th>
+    <table class="table text-center table-hover">
+        <thead style="color:#1D2A4D;">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">user_id</th>
+            <th scope="col">product_id</th>
+            <th scope="col">national</th>
+            <th scope="col">phone</th>
+            <th scope="col">address</th>
+            <th scope="col">city</th>
+            <th scope="col">status</th>
+            <th scope="col">Actions</th>
 
+        </tr>
+        </thead>
+        <tbody style="color:#354F8E">
+        @foreach($allOrders as $order)
+            <tr>
+                <th scope="row">{{$order['id']}}</th>
+                <td>{{$order['user_id']}}</td>
+                <td>{{$order['product_id']}}</td>
+                <td>{{$order['national']}}</td>
+                <td>{{$order['phone']}}</td>
+                <td>{{$order['address']}}</td>
+                <td>{{$order['city']}}</td>
+                <td>{{$order['status']}}</td>
+                <td>
+                    <div>
+                        <a class="fa-solid fa-user-pen me-2" style="color:green" href="editOrder/{{$order['id']}}"></a>
+                        <a class="fa-solid fa-trash" style="color: red" onclick="deleteOrder(this,{{$order['id']}})"></a>
+                    </div>
+                </td>
             </tr>
-            </thead>
-            <tbody>
-            @foreach($allOrders as $order)
-                <tr>
-                    <th scope="row">{{$order['id']}}</th>
-                    <td>{{$order['user_id']}}</td>
-                    <td>{{$order['product_id']}}</td>
-                    <td>{{$order['national']}}</td>
-                    <td>{{$order['phone']}}</td>
-                    <td>{{$order['address']}}</td>
-                    <td>{{$order['city']}}</td>
-                    <td>{{$order['status']}}</td>                
-                    <td>
-                        <div>
-                            <a class="fa-solid fa-user-pen me-2" href="editOrder/{{$order['id']}}"></a>
-                            <a class="fa-solid fa-trash" onclick="deleteOrder(this,{{$order['id']}})"></a>
-                        </div>
-                    </td>
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
+        @endforeach
+        </tbody>
+    </table>
 
 
         {{--        <br>--}}

@@ -35,12 +35,18 @@
               <h1>{{$doctorinfo->name}}</h1>
               <p>{{$doctorinfo->email}}</p>
           </div>
-
           <ul class="nav nav-pills nav-stacked">
-              <li class="w-100"><a href="{{route('editDocProfile' , $id)}}"> <i class="fa fa-edit"></i> Edit profile</a></li>
-              <li class="w-100"><a href="#"> <i class="bi bi-box-arrow-in-left"></i> Logout</a></li>
-
+            <li class="w-100"><a href="{{route('editDocProfile' , $id)}}"> <i class="fa fa-edit"></i> Edit profile</a></li>
           </ul>
+          <hr class="m-0">
+          <form action="{{route('logout')}}" method="POST">
+          @csrf
+          @method('POST')
+         
+
+             <input type="submit" value="Logout" style="border:none; border-radius:0px 0px 3px 3px; height:52px" class="w-100 btn btn-outline-danger">
+
+            </form>
       </div>
   </div>
   <div class="profile-info  col-md-9">
@@ -55,27 +61,27 @@
               <div class="row">
                 <div class="biosection1 col-md-12">
                   <div class="bio-row">
-                      <h5>Name: {{$doctorinfo->name}}</h5>
+                      <h3>Name: {{$doctorinfo->name}}</h3>
                   </div>
                   <div class="bio-row">
-                      <h5>Availalbe Time: {{$doctorinfo->available_time}}</h5>
+                      <h3>Availalbe Time: {{$doctorinfo->available_time}}</h3>
                   </div>
                   <div class="bio-row">
-                    <h5>Email:  {{$doctorinfo->email}}</h5>
+                    <h3>Email:  {{$doctorinfo->email}}</h3>
 
                   </div>
                   <div class="bio-row">
-                     <h5> Birthday: 13 July 1983</h5>
+                     <h3> Birthday: 13 July 1983</h3>
                   </div>
                 </div>
 
                 <div class="biosection1 col-md-12">
 
                   <div class="bio-row">
-                    <h5>  Mobile: 0785631487 </h5>
+                    <h3>  Mobile: 0785631487 </h3>
                 </div>
                   <div class="bio-row">
-                     <h5> Certificate:   {{$doctorinfo->certificate[1]}}.jpg</h5>
+                     <h3> Certificate:   {{$doctorinfo->certificate[1]}}.jpg</h3>
                   </div>
                  
                  
@@ -96,9 +102,9 @@
             <div class="table-responsive">
                 <table id="mytable" class="table table-bordred table-striped">
                     <thead class="">
-                        <th><h5>Appointment Number</h5></th>
-                        <th><h5>Date</h5></th>
-                        <th><h5>Patient Name</h5></th>
+                        <th><h4>Appointment Number</h4></th>
+                        <th><h4>Date</h4></th>
+                        <th><h4>Patient Name</h4></th>
 
                     </thead>
                     @foreach($appointmentsAndusers as $appointment)
@@ -107,9 +113,9 @@
 
                             <!-- Display Records -->
                             <tr class="">
-                                <td class="">{{$appointment->id}}</td>
-                                <td class="">{{$appointment->appointment_time}}</td>
-                                <td class="">{{$appointment->name}}</td>
+                                <td class=""> <h5> {{$appointment->id}}</h5></td>
+                                <td class=""><h5>{{$appointment->appointment_time}}</h5></td>
+                                <td class=""><h5>{{$appointment->name}}</h5></td>
 
 
 
