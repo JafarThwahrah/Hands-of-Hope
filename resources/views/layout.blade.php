@@ -169,12 +169,17 @@
             <div class="col-lg-4 col-md-6">
                 <h4 class="d-inline-block text-primary text-uppercase border-bottom border-5 border-secondary mb-4">
                     Newsletter</h4>
-                <form action="/" method="POST">
-                    <div class="input-group">
-                        <input type="text" class="form-control p-3 border-0" name="number" placeholder="07XXXXXXXX">
-                        <button class="btn btn-primary">Subsicribe</button>
-                    </div>
-                </form>
+                    <form action="{{route('Newsletter')}}">
+                        @csrf 
+                        <div class="input-group">
+                            <input type="text" class="form-control p-3 border-0" name="Newsletter" placeholder="07*******">
+                            
+                            <button class="btn btn-primary">submit</button>
+                        </div>
+                        @if($errors->any('Newsletter '))
+                            <span class="text-danger">{{$errors->first('Newsletter')}}</span>
+                            @endif
+                    </form>
 
             </div>
         </div>

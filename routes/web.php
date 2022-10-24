@@ -10,10 +10,11 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\contactController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DonationController;
-use App\Http\Controllers\DepartmentsController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\DepartmentsController;
 
 
 /*
@@ -57,7 +58,10 @@ Route::get('/about', function () {
 // contact page
 Route::get('/Contact', function () {
     return view('Contact');
+
 });
+Route::post('/Contact' , [contactController::class, 'store']);
+
 // landing page
 //Route::get('/index', function () {
 //
@@ -136,6 +140,11 @@ Route::get('/test', function () {
 });
 
 
-//Donation
+
+
+//Newsletter
+Route::get('/Newsletter' , [UserController::class, 'Newsletter'])->name('Newsletter');
+
 Route::post('donationForm', [DonationController::class, 'store']);
 Route::get('/donation', [DonationController::class, 'index']);
+
