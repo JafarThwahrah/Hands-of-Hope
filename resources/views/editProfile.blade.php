@@ -57,7 +57,6 @@
                                 <label for="password" class="form-label">Confirm Password</label>
                                 <input type="Password" class="form-control" name="password_confirmation" id="password_confirmation" aria-describedby="Password">
                             </div>
-
                             <button type="submit" class="btn btn-primary">Submit</button>
                             @endforeach
                         </form>
