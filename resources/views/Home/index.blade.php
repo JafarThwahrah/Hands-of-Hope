@@ -137,8 +137,6 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="owl-carousel testimonial-carousel">
-
-
                         @foreach($testimonials as $testimonial)
                             <div class="testimonial-item text-center">
                                 <div class="position-relative mb-5">
@@ -156,45 +154,13 @@
                                 <h3>{{$testimonial['name']}}</h3>
                                 <h6 class="fw-normal text-primary mb-3">{{$testimonial['subject']}}</h6>
                             </div>
-
                         @endforeach
-
-
-                        {{-- <div class="testimonial-item text-center">
-                            <div class="position-relative mb-5">
-                                <img class="img-fluid rounded-circle mx-auto" src="img/testimonial-2.jpg" alt="">
-                                <div class="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white rounded-circle"
-                                    style="width: 60px; height: 60px;">
-                                    <i class="fa fa-quote-left fa-2x text-primary"></i>
-                                </div>
-                            </div>
-                            <p class="fs-4 fw-normal">Dolores sed duo clita tempor justo dolor et stet lorem kasd labore
-                                dolore lorem ipsum. At lorem lorem magna ut et, nonumy et labore et tempor diam tempor
-                                erat. Erat dolor rebum sit ipsum.</p>
-                            <hr class="w-25 mx-auto">
-                            <h3>Patient Name</h3>
-                            <h6 class="fw-normal text-primary mb-3">Profession</h6>
-                        </div>
-                        <div class="testimonial-item text-center">
-                            <div class="position-relative mb-5">
-                                <img class="img-fluid rounded-circle mx-auto" src="img/testimonial-3.jpg" alt="">
-                                <div class="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white rounded-circle"
-                                    style="width: 60px; height: 60px;">
-                                    <i class="fa fa-quote-left fa-2x text-primary"></i>
-                                </div>
-                            </div>
-                            <p class="fs-4 fw-normal">Dolores sed duo clita tempor justo dolor et stet lorem kasd labore
-                                dolore lorem ipsum. At lorem lorem magna ut et, nonumy et labore et tempor diam tempor
-                                erat. Erat dolor rebum sit ipsum.</p>
-                            <hr class="w-25 mx-auto">
-                            <h3>Patient Name</h3>
-                            <h6 class="fw-normal text-primary mb-3">Profession</h6>
-                        </div> --}}
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <!-- Testimonial End -->
 
 @endsection
