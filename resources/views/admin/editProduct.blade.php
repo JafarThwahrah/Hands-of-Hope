@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container w-75">
-        <h4>Add Product</h4>
+        <h4>Edit Product</h4>
         <form action="/admin/storeEditProduct/{{$product['id']}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">

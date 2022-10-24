@@ -18,7 +18,6 @@
     
 @if(session('mssg'))
 <div class="row justify-content-md-center py-3">
-
 <h3 class="alert alert-success text-center col-md-4">{{session ('mssg')}}</h3>
 </div>
 @endif

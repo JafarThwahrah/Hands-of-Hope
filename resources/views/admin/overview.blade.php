@@ -65,6 +65,15 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-md-4 col-xl-3">
+            <div class="card bg-c-green order-card">
+                <div class="card-block">
+                    <h6 class="m-b-20">Total Donations</h6>
+                    <h2 class="text-right"><span>{{$donationAmount}}</span></h2>
+                </div>
+            </div>
+        </div>
 	</div>
 
             

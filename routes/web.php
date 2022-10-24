@@ -90,7 +90,8 @@ Route::get('/orderSave/{names}/{inputId}/{inputCity}/{inputPhone}/{inputAddress}
 
 
 // admin dashboard
-Route::get('/admin',[AdminController::class,'index'])->middleware(['auth', 'verified']);
+// ->middleware(['auth', 'verified']);
+Route::get('/admin',[AdminController::class,'index']);
 Route::get('/admin/editUser/{id}',[AdminController::class,'editUser']);
 Route::post('/admin/storeEdit/{id}',[AdminController::class,'storeEdit']);
 
@@ -121,6 +122,19 @@ Route::get('/admin/deleteAppointment/{id}',[AdminController::class,'deleteAppoin
 Route::get('/admin/editAppointment/{id}',[AdminController::class,'editAppointment']);
 
 Route::get('/admin/allDepartments',[AdminController::class,'allDepartments']);
+Route::post('/admin/allDepartments',[AdminController::class,'allDepartmentspost']);
+Route::post('/admin/deleteDepartment/{id}',[AdminController::class,'deleteDepartment']);
+Route::get('/admin/editDepartment/{id}',[AdminController::class,'editDepartment']);
+Route::put('/admin/storeEditDepartment/{id}',[AdminController::class,'storeEditDepartment']);
+
+
+
+
+
+Route::get('/admin/allDonations',[AdminController::class,'allDonations']);
+
+
+
 
 
 // contact page
