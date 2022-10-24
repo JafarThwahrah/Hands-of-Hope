@@ -83,9 +83,11 @@ Route::get('/orderSave/{names}/{inputId}/{inputCity}/{inputPhone}/{inputAddress}
 
 
 // admin dashboard
+
 Route::get('/admin', [AdminController::class, 'index'])->middleware(['auth', 'verified']);
 Route::get('/admin/editUser/{id}', [AdminController::class, 'editUser'])->middleware('can:Admin');
 Route::post('/admin/storeEdit/{id}', [AdminController::class, 'storeEdit']);
+
 
 Route::get('/admin/editDoctor/{id}', [AdminController::class, 'editDoctor'])->middleware('can:Admin');
 Route::post('/admin/storeEditDoctor/{id}', [AdminController::class, 'storeEditDoctor']);
@@ -113,7 +115,19 @@ Route::get('/admin/allAppointment', [AdminController::class, 'allAppointment'])-
 Route::get('/admin/deleteAppointment/{id}', [AdminController::class, 'deleteAppointment'])->middleware('can:Admin');
 Route::get('/admin/editAppointment/{id}', [AdminController::class, 'editAppointment'])->middleware('can:Admin');
 
-Route::get('/admin/allDepartments', [AdminController::class, 'allDepartments'])->middleware('can:Admin');
+
+Route::get('/admin/allDepartments',[AdminController::class,'allDepartments'])->middleware('can:Admin');
+Route::post('/admin/allDepartments',[AdminController::class,'allDepartmentspost']);
+Route::post('/admin/deleteDepartment/{id}',[AdminController::class,'deleteDepartment']);
+Route::get('/admin/editDepartment/{id}',[AdminController::class,'editDepartment']);
+Route::put('/admin/storeEditDepartment/{id}',[AdminController::class,'storeEditDepartment']);
+
+
+Route::get('/admin/allDonations',[AdminController::class,'allDonations']);
+
+
+
+
 
 
 // contact page

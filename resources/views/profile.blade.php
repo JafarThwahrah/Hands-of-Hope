@@ -13,6 +13,43 @@
 
 
 @section('content')
+    
+@if(session('mssg'))
+<div class="row justify-content-md-center py-3">
+<h3 class="alert alert-success text-center col-md-4">{{session ('mssg')}}</h3>
+</div>
+@endif
+
+<div class="container bootstrap snippets bootdey py-5">
+<div class="row justify-content-md-center">
+  
+  <div class="profile-info col-md-11">
+     
+      <div class="panel border">
+          <div class="bio-graph-heading" >
+          </div>
+          <div class="panel-body bio-graph-info" style="height: 27rem; padding-top:3rem">
+              <h1>Bio Graph</h1>
+
+     @foreach($User as $userinfo)
+
+              <div class="row">
+                <div class="biosection1 col-md-12">
+                  <div class="bio-row">
+                     <h3> Name: {{$userinfo->name}}</h3>
+                  </div>
+                  <div class="bio-row">
+                     <h3> Email:  {{$userinfo->email}}</h3>
+                  </div>
+                  
+                  <div class="bio-row">
+                    <h3>Birthday: 13 July 1983</h3>
+                  </div>
+                  <div class="bio-row">
+                    <h3> Mobile: 0785631487</h3>
+                 </div>
+                </div>
+
 
     @section('container')
         <div >
