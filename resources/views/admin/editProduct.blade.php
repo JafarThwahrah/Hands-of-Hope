@@ -13,9 +13,14 @@
                 <label for="name" class="form-label">Product Description</label>
                 <input type="text" class="form-control" id="name" name="description" value="">
             </div>
+            
             <div class="mb-3">
                 <label for="name" class="form-label">Product image</label>
                 <input type="file" class="form-control" id="name" name="image">
+            </div>
+            <div class="mb-3">
+                <label for="quantity" class="form-label">Quantity</label>
+                <input type="number" class="form-control" id="quantity" name="quantity">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

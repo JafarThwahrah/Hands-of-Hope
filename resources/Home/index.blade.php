@@ -40,7 +40,7 @@
                             <h4 class="mb-3">{{$department['name']}}</h4>
 
                             <p class="m-0">{{$department['description']}}</p>
-                            <a class="btn btn-lg btn-primary rounded-pill" href='/appointment/{{$department['id']}}'>
+                            <a class="btn btn-lg btn-primary rounded-pill" href='/appointment/{{$department['Did']}}/{{$user['uid']}}'>
 
                                 <i class="bi bi-arrow-right"></i>
                             </a>

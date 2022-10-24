@@ -39,35 +39,45 @@
               <div class="row">
                 <div class="biosection1 col-md-12">
                   <div class="bio-row">
-                     <h5> Name: {{$userinfo->name}}</h5>
+                     <h3> Name: {{$userinfo->name}}</h3>
                   </div>
                   <div class="bio-row">
-                     <h5> Email:  {{$userinfo->email}}</h5>
+                     <h3> Email:  {{$userinfo->email}}</h3>
                   </div>
                   
                   <div class="bio-row">
-                    <h5>Birthday: 13 July 1983</h5>
+                    <h3>Birthday: 13 July 1983</h3>
                   </div>
                   <div class="bio-row">
-                    <h5> Mobile: 0785631487</h5>
+                    <h3> Mobile: 0785631487</h3>
                  </div>
                 </div>
 
                 <div class="biosection1 col-md-12">
+                  @php
 
-                 
+              
+                  $user = Auth::user();
+              @endphp
                 
                   <div class="bio-row">
-                      <h5>City:  Amman</h5>
+                      <h3>City:  Amman</h3>
                   </div>
                 </div>
 
                  <div class="ms-4 row">
-                  <ul class="nav nav-pills">
-                    <li class=""><a class="btn btn-outline-info" href="{{route('editProfile' , $id)}}"> <i class="fa fa-edit"></i> Edit profile</a></li>
-                    <li class="ms-4"><a class="btn btn-outline-danger" href="#" style="color: red"><i class="bi bi-box-arrow-in-left"></i> Logout</a></li>
-      
+                 
+                    <form action="{{route('logout')}}" method="POST">
+                      @csrf
+                      
+                      <ul class="nav nav-pills">
+                        <li class=""><a class="btn btn-outline-info" href="{{route('editProfile' , $id)}}"> <i class="fa fa-edit"></i> Edit profile</a></li>
+                    <li class="ms-4"><button class="btn btn-outline-danger" style="color: red; height:37px; width:100px; border-radius:5px"><i class="bi bi-box-arrow-in-left"></i> Logout</button></li>
+                    @if($user->role==='Admin')
+                    <li class="ms-4"><a class="btn btn-outline-warning" href="/admin"> Admin Dashboard</a></li>
+                    @endif
                 </ul>
+              </form>
               </div>
 
 
@@ -87,9 +97,9 @@
             <div class="table-responsive">
                 <table id="mytable" class="table table-bordred table-striped">
                     <thead class="">
-                        <th><h5>Appointment Number</h5></th>
-                        <th><h5>Date</h5></th>
-                        <th><h5>Doctor Name</h5></th>
+                        <th><h4>Appointment Number</h4></th>
+                        <th><h4>Date</h4></th>
+                        <th><h4>Doctor Name</h4></th>
 
                     </thead>
                     @foreach($appointments as $appointment)
@@ -98,9 +108,9 @@
 
                             <!-- Display Records -->
                             <tr class="">
-                                <td class="">{{$appointment->id}}</td>
-                                <td class="">{{$appointment->appointment_time}}</td>
-                                <td class="">{{$appointment->name}}</td>
+                                <td class=""> <h5>{{$appointment->id}} </h5></td>
+                                <td class=""><h5>{{$appointment->appointment_time}}</h5></td>
+                                <td class=""><h5>{{$appointment->name}}</h5></td>
 
 
 
@@ -126,10 +136,10 @@
           <div class="table-responsive">
               <table id="mytable" class="table table-bordred table-striped">
                   <thead class="">
-                      <th><h5>Order Number</h5></th>
-                      <th><h5>Product Name</h5></th>
-                      <th><h5>status</h5></th>
-                      <th><h5>Date</h5></th>
+                      <th><h4>Order Number</h4></th>
+                      <th><h4>Product Name</h4></th>
+                      <th><h4>status</h4></th>
+                      <th><h4>Date</h4></th>
 
                   </thead>
                   @foreach($orders as $order)
@@ -138,10 +148,10 @@
 
                           <!-- Display Records -->
                           <tr class="">
-                              <td class="">{{$order->id}}</td>
-                              <td class="">{{$order->name}}</td>
-                              <td class="">{{$order->status}}</td>
-                              <td class="">{{$order->created_at}}</td>
+                              <td class=""><h5>{{$order->id}}</h5></td>
+                              <td class=""><h5>{{$order->name}}</h5></td>
+                              <td class=""><h5>{{$order->status}}</h5></td>
+                              <td class=""><h5>{{$order->created_at}}</h5></td>
 
 
 

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->binary('image');
             $table->text('description');
+            $table->bigInteger('quantity');
             $table->timestamps();
         });
     }

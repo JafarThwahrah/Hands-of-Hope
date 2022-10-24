@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\appointment;
+use App\Models\User;
+use App\Models\Order;
 use App\Models\doctor;
 use App\Models\product;
-use App\Models\Order;
-use App\Models\User;
+use App\Models\appointment;
+use App\Models\departments;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -18,9 +20,15 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $allUsers = User::all();
-        $allDoctors = doctor::all();
-        return view('admin.overview', ['allUsers' => $allUsers, 'allDoctors' => $allDoctors]);
+        $NumallUsers = count(User::all());
+        $NumallDoctors = count(doctor::all());
+        $NumallOrders = count(Order::all());
+        $NumallAppointments = count(appointment::all());
+        $NumallProducts = count(product::all());
+        $NumallDepartments = count(departments::all());
+
+
+        return view('admin.overview', ['NumallUsers' => $NumallUsers, 'NumallDoctors' => $NumallDoctors, 'NumallOrders' => $NumallOrders, 'NumallAppointments' => $NumallAppointments, 'NumallProducts' => $NumallProducts , 'NumallDepartments'=>$NumallDepartments]);
     }
 
     /**
@@ -33,7 +41,7 @@ class AdminController extends Controller
 
         $allDoctors = doctor::all();
         $approved = doctor::all('status')->where('status', '=', 'Approve');
-        $pending = doctor::all('status')->where('status', '=', 'pending ');
+        $pending = doctor::all('status')->where('status', '=', 'pendding');
         return view('admin.allDoctor', ['allDoctors' => $allDoctors, 'approved' => $approved, 'pending' => $pending]);
     }
 
@@ -51,9 +59,53 @@ class AdminController extends Controller
 
     public function allAppointment()
     {
-        //TODO get All product From table
-        $allAppointment = appointment::all();
-        return view('admin.allAppointment', ['allAppointment' => $allAppointment]);
+
+
+        $usersDoctorsAppointments = DB::table('users')
+            ->join('appointment', 'users.id', '=', 'appointment.user_id')
+            ->join('doctors', 'doctors.id', '=', 'appointment.doctor_id')
+            ->select('users.*', 'doctors.*', 'appointment.*')
+            ->get();
+
+
+
+
+        $names = DB::table('users')
+            ->join('appointment', 'users.id', '=', 'appointment.user_id')
+            ->join('doctors', 'doctors.id', '=', 'appointment.doctor_id')
+            ->select('users.*', 'appointment.*')
+            ->get();
+
+
+
+        foreach ($names as $name) {
+
+            $name->user_name = $name->name;
+        }
+
+
+        $counter = 0;
+        foreach ($usersDoctorsAppointments as $usr) {
+            for ($i = $counter; $i < count($names); $i++) {
+
+                $usr->user_name = $names[$i]->user_name;
+                $counter++;
+
+                break;
+            }
+        }
+
+
+
+        return view('admin.allAppointment', ['usersDoctorsAppointments' => $usersDoctorsAppointments]);
+    }
+
+    public function allDepartments(){
+
+        $allDepartments=departments::all();
+
+        return view('admin.allDepartments', ['allDepartments' => $allDepartments]);
+
     }
 
     /**
@@ -67,6 +119,7 @@ class AdminController extends Controller
         $allUsers = User::all();
         // $approved = doctor::all('status')->where('status','=','Approve');
         // $pending = doctor::all('status')->where('status','=','pending ');
+        // dd(count($allUsers));
         return view('admin.allUsers', ['allUsers' => $allUsers]);
     }
 
@@ -101,6 +154,7 @@ class AdminController extends Controller
     {
         $product = new product();
         $product->name = $request->name;
+        $product->quantity = $request->quantity;
         $product->description = $request->description;
         $image = base64_encode(file_get_contents($request->file('image')));
         $product->image = $image;
@@ -196,6 +250,7 @@ class AdminController extends Controller
 
         $product = product::find($id);
         $product->name = $request->name;
+        $product->quantity = $request->quantity;
         $product->description = $request->description;
         $image = base64_encode(file_get_contents($request->file('image')));
         $product->image = $image;
@@ -206,7 +261,7 @@ class AdminController extends Controller
     public function storeEditDoctor(Request $request, $id)
     {
         //TODO: handle update doctor
-//        dd($request);
+        //        dd($request);
         $doctor = doctor::find($id);
         $doctor->email = $request->email;
         $doctor->name = $request->name;
@@ -260,8 +315,8 @@ class AdminController extends Controller
     }
 
 
-    
-  /**
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
@@ -271,12 +326,12 @@ class AdminController extends Controller
 
         $allOrders = Order::all();
         $approved = Order::all('status')->where('status', '=', 'Approve');
-        $pending = Order::all('status')->where('status', '=', 'pending ');
+        $pending = Order::all('status')->where('status', '=', 'pendding');
         return view('admin.allOrder', ['allOrders' => $allOrders, 'approved' => $approved, 'pending' => $pending]);
     }
 
 
- /**
+    /**
      * Remove the specified resource from storage.
      *
      * @param int $id
@@ -286,7 +341,7 @@ class AdminController extends Controller
     {
         $order = Order::destroy($id);
 
-        return response()->json( $order);
+        return response()->json($order);
     }
 
 
@@ -302,7 +357,7 @@ class AdminController extends Controller
 
     public function storeEditOrder(Request $request, $id)
     {
-      
+
         $order = Order::find($id);
         $order->user_id = $request->user_id;
         $order->product_id = $request->product_id;
@@ -314,11 +369,4 @@ class AdminController extends Controller
         $order->save();
         return redirect('admin')->withSuccess('Order Updated');
     }
-
-
-
-
-
-
-
 }
