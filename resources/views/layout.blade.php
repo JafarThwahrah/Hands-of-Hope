@@ -169,22 +169,36 @@
             <div class="col-lg-4 col-md-6">
                 <h4 class="d-inline-block text-primary text-uppercase border-bottom border-5 border-secondary mb-4">
                     Newsletter</h4>
-                    <form action="{{route('Newsletter')}}">
-                        @csrf 
-                        <div class="input-group">
-                            <input type="text" class="form-control p-3 border-0" name="Newsletter" placeholder="07*******">
-                            
-                            <button class="btn btn-primary">submit</button>
-                        </div>
-                        @if($errors->any('Newsletter '))
-                            <span class="text-danger">{{$errors->first('Newsletter')}}</span>
-                            @endif
-                    </form>
+                <form action="{{route('Newsletter')}}" id="submitBtn">
+                    @csrf
+                    <div class="input-group">
+                        <input type="text" class="form-control p-3 border-0" name="Newsletter" placeholder="07*******">
 
+                        <button class="btn btn-primary " type="submit" onclick="event.preventDefault()
+                                    Swal.fire({
+                                          position: 'top-center',
+                                          icon: 'success',
+                                          title: 'You have been subscribed successfully',
+                                          showConfirmButton: false,
+                                          timer: 1500
+                                        })
+                                        let form = document.getElementById('submitBtn')
+                                        setTimeout(function() {
+                                            form.submit()
+                                        },1550)
+                                    ">Subscribe
+                        </button>
+                    </div>
+{{--                    @if($errors->any('Newsletter'))--}}
+{{--                        <span class="text-danger">{{$errors->first('Newsletter')}}</span>--}}
+{{--                    @endif--}}
+                </form>
             </div>
         </div>
     </div>
 </div>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <div class="container-fluid bg-dark text-light border-top border-secondary py-4">
     <div class="container">
         <div class="row g-5">
@@ -213,7 +227,7 @@
 <script src="{{asset('lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js')}}"></script>
 
 
-<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src="{{asset('js/login.js')}}"></script>
 
 

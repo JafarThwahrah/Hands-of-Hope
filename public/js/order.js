@@ -15,14 +15,13 @@ let product_id=document.getElementById("product_id").value;
 
     Swal.fire({
         title: 'Are you sure?',
-        text: "You won't be able to edit this!",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, Approve it!'
+        confirmButtonText: 'Yes, Place order!'
 
-        
+
     }).then((result) => {
         if (result.isConfirmed) {
             fetch(`/orderSave/${names}/${inputId}/${inputCity}/${inputPhone}/${inputAddress}/${product_id}`)
@@ -34,9 +33,9 @@ let product_id=document.getElementById("product_id").value;
                 'Thank You',
         ).then(function(){
             window.location.href="/";
-        })  
+        })
         }
-      
+
     })
 
 }

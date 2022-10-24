@@ -14,13 +14,7 @@
 
 
     </head>
-
-    <body style="height: initial; overflow: initial; position: initial;">
-
-
     <div class="fade-in">
-
-
         <div class="container-lg mt-5 mb-5">
             <div class="pt-5"></div>
             <div class="row">
@@ -108,7 +102,8 @@
                             <div>
                                 <h2 class="fw-bold">You're making a difference. </h2>
                             </div>
-                            <form action="/donationForm" method="post">
+
+                            <form action="/donationForm" method="post" id="submitBtn">
                                 @csrf
 
                                 <div class="mb-3">
@@ -179,8 +174,22 @@
 
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Submit</button>
 
+
+                                <button class="btn btn-primary " type="submit" onclick="event.preventDefault()
+                                    Swal.fire({
+                                          position: 'top-center',
+                                          icon: 'success',
+                                          title: 'Thanks for your donation ',
+                                          showConfirmButton: false,
+                                          timer: 1500
+                                        })
+                                        let form = document.getElementById('submitBtn')
+                                        setTimeout(function() {
+                                            form.submit()
+                                        },1550)
+                                    ">Submit
+                                </button>
                             </form>
                         </div>
                     </div>
@@ -194,6 +203,7 @@
         </div>
     </div>
 
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
