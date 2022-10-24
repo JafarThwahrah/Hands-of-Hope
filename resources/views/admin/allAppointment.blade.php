@@ -3,7 +3,7 @@
 @section('content')
 
 
-<div class="d-flex justify-content-between">
+<div class="d-flex justify-content-between m-3 ">
     <div class="h4" style="color: black">All Appointment</div>
 </div>
 <table class="table text-center table-hover">

@@ -1,7 +1,14 @@
 @extends('admin.index')
 {{--box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;--}}
 @section('content')
-    <div class="m-5">
+
+@if(session('success'))
+<div class="row justify-content-md-center py-3">
+<p class="alert alert-success text-center col-md-4">{{session ('success')}}</p>
+</div>
+@endif
+
+    <div class="m-3">
         <div class="d-flex justify-content-between">
             <div class="h4" style="color:green">All Users</div>
         </div>

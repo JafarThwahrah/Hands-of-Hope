@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Order;
 use App\Models\doctor;
 use App\Models\product;
+use App\Models\Donation;
 use App\Models\appointment;
 use App\Models\departments;
 use Illuminate\Http\Request;
@@ -26,9 +27,11 @@ class AdminController extends Controller
         $NumallAppointments = count(appointment::all());
         $NumallProducts = count(product::all());
         $NumallDepartments = count(departments::all());
+        $sum = Donation::sum('donationAmount');
 
 
-        return view('admin.overview', ['NumallUsers' => $NumallUsers, 'NumallDoctors' => $NumallDoctors, 'NumallOrders' => $NumallOrders, 'NumallAppointments' => $NumallAppointments, 'NumallProducts' => $NumallProducts , 'NumallDepartments'=>$NumallDepartments]);
+
+        return view('admin.overview', ['NumallUsers' => $NumallUsers, 'NumallDoctors' => $NumallDoctors, 'NumallOrders' => $NumallOrders, 'NumallAppointments' => $NumallAppointments, 'NumallProducts' => $NumallProducts , 'NumallDepartments'=>$NumallDepartments , 'donationAmount' => $sum]);
     }
 
     /**
@@ -120,7 +123,7 @@ class AdminController extends Controller
         // $approved = doctor::all('status')->where('status','=','Approve');
         // $pending = doctor::all('status')->where('status','=','pending ');
         // dd(count($allUsers));
-        return view('admin.allUsers', ['allUsers' => $allUsers]);
+        return view('admin/allUsers', ['allUsers' => $allUsers]);
     }
 
     /**
@@ -185,6 +188,53 @@ class AdminController extends Controller
         //
     }
 
+    public function allDonations(){
+
+        $donations = Donation::all();
+
+        return view('admin.donations' , ['donations' => $donations]);
+    }
+
+    public function allDepartmentspost(Request $request){
+
+        $Department = new departments();
+        $Department->name = $request->name;
+        $Department->description = $request->description;
+        $Department->numberOfMembers = $request->members;
+
+        $Department->save();
+        return redirect('/admin/allDepartments');
+
+
+    }
+
+    public function deleteDepartment($id){
+
+
+        $Department = departments::destroy($id);
+
+        return response()->json($Department);
+    }
+
+    public function editDepartment($id){
+
+        $Department = departments::find($id);
+
+        return view('admin.editDepartment' , ['Department' => $Department]);
+
+    }
+
+    public function storeEditDepartment($id){
+
+        departments::where('id', $id)->update(['name' => request('name'), 'description' => request('description'), 'numberOfMembers' => request('Members')]);
+
+        return redirect('/admin/allDepartments')->with('mssg', 'Department information updated successfully');
+
+
+        
+
+    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -242,7 +292,7 @@ class AdminController extends Controller
         $user->password = $request->password;
         $user->role = $request->role;
         $user->save();
-        return redirect('admin')->withSuccess('User Updated');
+        return redirect('admin/allUsers')->withSuccess('User Updated');
     }
 
     public function storeEditProduct(Request $request, $id)
@@ -255,7 +305,7 @@ class AdminController extends Controller
         $image = base64_encode(file_get_contents($request->file('image')));
         $product->image = $image;
         $product->save();
-        return redirect('admin/allProduct')->withSuccess('User Updated');
+        return redirect('admin/allProduct')->withSuccess('Product Updated');
     }
 
     public function storeEditDoctor(Request $request, $id)

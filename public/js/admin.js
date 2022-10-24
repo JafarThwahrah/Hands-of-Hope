@@ -128,3 +128,30 @@ function deleteOrder(e, id) {
         }
     })
 }
+
+
+
+function deleteDepartment(e, id) {
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            fetch(`http://127.0.0.1:8000/admin/deleteDepartment/${id}`)
+                .then(res => res.json())
+                .then(ress => console.log(ress))
+            e.parentElement.parentElement.parentElement.remove()
+            Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+            )
+        }
+    })
+}
+

@@ -13,7 +13,7 @@
                         <div class="pt-2">
                             {{-- <a href="" class="btn btn-light rounded-pill py-md-3 px-md-5 mx-2">Find Doctor</a> --}}
                             <a href=""
-                               class="btn btn-outline-light rounded-pill py-md-3 px-md-5 mx-2">Appointment</a>
+                               class="btn btn-outline-info rounded-pill py-md-3 px-md-5 mx-2" style="background-color:turquoise; color:white;">Appointment</a>
                         </div>
                     </div>
                 </div>
