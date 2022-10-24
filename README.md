@@ -1,4 +1,4 @@
-# hands Of Hope
+# Hands Of Hope
 
 HandsOfHope is a web applications for charity services, we specialized in medical sector in order to give needy people a hand of hope for all their medical problems.
 
