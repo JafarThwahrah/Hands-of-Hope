@@ -13,7 +13,7 @@
                 <label for="name" class="form-label">Product Description</label>
                 <input type="text" class="form-control" id="name" name="description" value="">
             </div>
-            
+
             <div class="mb-3">
                 <label for="name" class="form-label">Product image</label>
                 <input type="file" class="form-control" id="name" name="image">

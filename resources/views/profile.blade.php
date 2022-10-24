@@ -142,91 +142,91 @@
                         </div>
                     </div>
 
-                    </div>
-                    <div class="row justify-content-md-center">
-                        <div class="col-lg-11">
-                            <div class="card mb-4">
-                                <div class="card-body">
-                                    <h3>Appointment History</h3>
-                                    <div class="table-responsive">
-                                        <table id="mytable" class="table table-bordred table-striped">
-                                            <thead class="">
-                                            <th><h4>Appointment Number</h4></th>
-                                            <th><h4>Date</h4></th>
-                                            <th><h4>Doctor Name</h4></th>
+                </div>
+                <div class="row justify-content-md-center">
+                    <div class="col-lg-11">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h3>Appointment History</h3>
+                                <div class="table-responsive">
+                                    <table id="mytable" class="table table-bordred table-striped">
+                                        <thead class="">
+                                        <th><h4>Appointment Number</h4></th>
+                                        <th><h4>Date</h4></th>
+                                        <th><h4>Doctor Name</h4></th>
 
-                                            </thead>
-                                            @foreach($appointments as $appointment)
+                                        </thead>
+                                        @foreach($appointments as $appointment)
 
-                                                <tbody>
+                                            <tbody>
 
-                                                <!-- Display Records -->
-                                                <tr class="">
-                                                    <td class=""><h5>{{$appointment->id}} </h5></td>
-                                                    <td class=""><h5>{{$appointment->appointment_time}}</h5></td>
-                                                    <td class=""><h5>{{$appointment->name}}</h5></td>
-
-
-                                                </tr>
+                                            <!-- Display Records -->
+                                            <tr class="">
+                                                <td class=""><h5>{{$appointment->id}} </h5></td>
+                                                <td class=""><h5>{{$appointment->appointment_time}}</h5></td>
+                                                <td class=""><h5>{{$appointment->name}}</h5></td>
 
 
-                                                </tbody>
-                                            @endforeach
+                                            </tr>
 
-                                        </table>
-                                    </div>
+
+                                            </tbody>
+                                        @endforeach
+
+                                    </table>
                                 </div>
                             </div>
                         </div>
-
                     </div>
-                    <div class="row justify-content-md-center">
-
-                        <div class="col-lg-11">
-                            <div class="card mb-4">
-                                <div class="card-body">
-                                    <h3>Orders History</h3>
-                                    <div class="table-responsive">
-                                        <table id="mytable" class="table table-bordred table-striped">
-                                            <thead class="">
-                                            <th><h4>Order Number</h4></th>
-                                            <th><h4>Product Name</h4></th>
-                                            <th><h4>status</h4></th>
-                                            <th><h4>Date</h4></th>
-
-                                            </thead>
-                                            @foreach($orders as $order)
-
-                                                <tbody>
-
-                                                <!-- Display Records -->
-                                                <tr class="">
-                                                    <td class=""><h5>{{$order->id}}</h5></td>
-                                                    <td class=""><h5>{{$order->name}}</h5></td>
-                                                    <td class=""><h5>{{$order->status}}</h5></td>
-                                                    <td class=""><h5>{{$order->created_at}}</h5></td>
-
-
-                                                </tr>
-
-
-                                                </tbody>
-                                            @endforeach
-
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <ul class="nav nav-pills d-flex flex-row-reverse" style="margin-right: 5.5rem">
-                        <li class=""><a class="btn btn-outline-primary " href="{{route('testimonial' , $id)}}"> Tell us
-                                about your
-                                experiance</a></li>
-
-                    </ul>
 
                 </div>
+                <div class="row justify-content-md-center">
+
+                    <div class="col-lg-11">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h3>Orders History</h3>
+                                <div class="table-responsive">
+                                    <table id="mytable" class="table table-bordred table-striped">
+                                        <thead class="">
+                                        <th><h4>Order Number</h4></th>
+                                        <th><h4>Product Name</h4></th>
+                                        <th><h4>status</h4></th>
+                                        <th><h4>Date</h4></th>
+
+                                        </thead>
+                                        @foreach($orders as $order)
+
+                                            <tbody>
+
+                                            <!-- Display Records -->
+                                            <tr class="">
+                                                <td class=""><h5>{{$order->id}}</h5></td>
+                                                <td class=""><h5>{{$order->name}}</h5></td>
+                                                <td class=""><h5>{{$order->status}}</h5></td>
+                                                <td class=""><h5>{{$order->created_at}}</h5></td>
+
+
+                                            </tr>
+
+
+                                            </tbody>
+                                        @endforeach
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <ul class="nav nav-pills d-flex flex-row-reverse" style="margin-right: 5.5rem">
+                    <li class=""><a class="btn btn-outline-primary " href="{{route('testimonial' , $id)}}"> Tell us
+                            about your
+                            experiance</a></li>
+
+                </ul>
+
+            </div>
 
 @endsection
