@@ -74,7 +74,7 @@
                         <a href="/about" class="nav-item nav-link">About</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Departments</a>
-                            <div class="dropdown-menu m-0">
+                            <div class="dropdown-menu m-0" style="font-size: 14px !important;">
                                 @foreach($Department as $department)
 
                                     <a href="{{route('appointmentPage',$department['id'])}}"
