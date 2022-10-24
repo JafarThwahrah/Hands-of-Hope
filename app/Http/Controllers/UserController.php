@@ -10,6 +10,7 @@ use App\Models\Testimonial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules;
 
 
 class UserController extends Controller
@@ -27,46 +28,50 @@ class UserController extends Controller
     public function showuserpage($id)
     {
         $User = User::where('id', $id)->get();
-        $appointmentsAndDoctors = DB::table('doctors')->join('appointment', 'appointment.doctor_id', '=', 'doctors.id')->where('appointment.user_id' , $id)->get();
-        $orders = DB::table('products')->join('orders', 'orders.product_id', '=', 'products.id')->where('orders.user_id' , $id)->get();
+        $appointmentsAndDoctors = DB::table('doctors')->join('appointment', 'appointment.doctor_id', '=', 'doctors.id')->where('appointment.user_id', $id)->get();
+        $orders = DB::table('products')->join('orders', 'orders.product_id', '=', 'products.id')->where('orders.user_id', $id)->get();
 // dd($orders);
 
-        return view('profile' ,  ['id' => $id, 'User' => $User , 'appointments' => $appointmentsAndDoctors , 'orders' => $orders]);
+        return view('profile', ['id' => $id, 'User' => $User, 'appointments' => $appointmentsAndDoctors, 'orders' => $orders]);
 
     }
 
-    public function edituserinfo($id){
+    public function edituserinfo($id)
+    {
         $User = User::where('id', $id)->get();
-        return view('editProfile' ,['id' => $id , 'User'=>$User]);
+        return view('editProfile', ['id' => $id, 'User' => $User]);
     }
 
-    public function updateuserinfo(Request $request, $id){
+    public function updateuserinfo(Request $request, $id)
+    {
 
         $request->validate([
             'Name' => 'required',
             'Email' => 'required',
-            'Password' => 'required',
-            
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+
         ]);
 
         // Hash::make($request->password)
-$Password = request('Password');
+        $Password = request('Password');
         User::where('id', $id)->update(['name' => request('Name'), 'email' => request('Email'), 'password' => Hash::make($request->password)]);
 
         return redirect("/userprofile/$id")->with('mssg', 'Personal information updated successfully');
-    
+
 
     }
 
-    public function testimonial($id){
+    public function testimonial($id)
+    {
 
         $User = User::where('id', $id)->get();
-        
-        return view('testimonial' , ['id' => $id , 'User' => $User]);
+
+        return view('testimonial', ['id' => $id, 'User' => $User]);
     }
 
-    public function testimonialpost(Request $request , $id){
-        
+    public function testimonialpost(Request $request, $id)
+    {
+
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'],
@@ -74,10 +79,10 @@ $Password = request('Password');
             'message' => ['required', 'string'],
 
         ]);
-       
+
 
         $Testimonial = new Testimonial();
-        
+
 
         $Testimonial->name = request('name');
         $Testimonial->email = request('email');
@@ -88,9 +93,8 @@ $Password = request('Password');
         $Testimonial->save();
 
         return redirect("/userprofile/$id")->with('mssg', 'Thanks for sharing your opinion with us');
-        
-    }
 
+    }
 
 
     /**
@@ -106,7 +110,7 @@ $Password = request('Password');
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -117,7 +121,7 @@ $Password = request('Password');
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -128,7 +132,7 @@ $Password = request('Password');
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -139,8 +143,8 @@ $Password = request('Password');
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -151,7 +155,7 @@ $Password = request('Password');
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

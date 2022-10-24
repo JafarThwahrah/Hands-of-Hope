@@ -1,8 +1,77 @@
 @extends('admin.index')
 {{--box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;--}}
 @section('content')
-<div class="d-flex justify-content-between">
+
+
+
+{{-- add Product Model --}}
+
+
+  <!-- Signup Modal -->
+
+
+
+  <form name="regForm" id="signUpForm" action="/admin/addProduct" enctype="multipart/form-data" method="POST">
+
+    @csrf
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="exampleModalLabel">Add New Product</h3>
+            <hr>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+
+
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control"  name="name" id="name" placeholder="name">
+              <label for="name">Product Name</label>
+            </div>
+
+
+
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control"  name="description" id="description" placeholder="description...">
+              <label for="description">Description</label>
+            </div>
+
+            
+
+            <div class="form-floating mb-3">
+              <input type="text"  class="form-control" name="quantity" id="quantity" placeholder="quantity">
+              <label for="quantity">Quantity</label>
+            </div>
+
+            <div class="form mb-3">
+                <label for="image">Product Image</label>
+                <input type="file" class="form-control"  name="image" id="image" placeholder="image">
+              </div>
+
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <input type="submit" name="signupformbtnname" style="border-radius: 5px; padding:5px;" id="Signupformbtn" class="btn btn-primary">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </form>
+
+
+  {{-- model end here --}}
+
+
+
+
+<div class="d-flex justify-content-between m-3">
     <div class="h4">All Products</div>
+    <button type="button" class="btn btn-primary m-1 w-25 rounded-pill " data-bs-toggle="modal" data-bs-target="#exampleModal">Add New Product</button>
 </div>
 <table class="table text-center table-hover ">
     <thead style="color:#1D2A4D; ">
@@ -32,27 +101,5 @@
     </tbody>
 </table>
 
-    <div class="container w-75">
-        <h4>Add Product</h4>
-        <form action="/admin/addProduct" method="post" enctype="multipart/form-data">
-            @csrf
-            <div class="mb-3">
-                <label for="name" class="form-label">Product Name</label>
-                <input type="text" class="form-control" id="name" name="name" value="">
-            </div>
-            <div class="mb-3">
-                <label for="name" class="form-label">Product Description</label>
-                <input type="text" class="form-control" id="name" name="description" value="">
-            </div>
-            <div class="mb-3">
-                <label for="quantity" class="form-label">Quantity</label>
-                <input type="number" class="form-control" id="quantity" name="quantity">
-            </div>
-            <div class="mb-3">
-                <label for="name" class="form-label">Product image</label>
-                <input type="file" class="form-control" id="name" name="image">
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-    </div>
+
 @endsection

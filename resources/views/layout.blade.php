@@ -48,63 +48,96 @@
 
 @php
 
-use App\Models\departments;
-    $Department = departments::all();
-    $user = Auth::user();
+    use App\Models\departments;
+        $Department = departments::all();
+        $user = Auth::user();
 @endphp
 
     <!-- Navbar Start -->
 <div class="container-fluid sticky-top bg-white shadow-sm">
-    <div class="container">
-        <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
-            <a href="/" class="navbar-brand"> <img
-                    src="https://243515-1941852-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2015/05/Hands-of-Hope-logo.png"
-                    alt="hope" width="200px" height="110px">
+    @section('container')
+        <div class="container">
+            @endsection
+            <nav class="navbar navbar-expand-lg bg-white navbar-light @section('py') py-lg-0" @endsection >
+                <a href="/" class="navbar-brand"> <img
+                        src="https://243515-1941852-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2015/05/Hands-of-Hope-logo.png"
+                        alt="hope" width="200px" height="110px">
 
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav ms-auto py-0">
-                    <a href="/" class="nav-item nav-link ">Home</a>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" style="line-height: 2.5" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto py-0">
+                        <a href="/" class="nav-item nav-link ">Home</a>
 
-                    <a href="/about" class="nav-item nav-link">About</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Departments</a>
-                        <div class="dropdown-menu m-0">
-                            @foreach($Department as $department)
+                        <a href="/about" class="nav-item nav-link">About</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Departments</a>
+                            <div class="dropdown-menu m-0" style="font-size: 14px !important;">
+                                @foreach($Department as $department)
 
-                                <a href="{{route('appointmentPage',$department['id'])}}"
-                                   class="dropdown-item">{{$department['name']}}</a>
-                            @endforeach
+                                    <a href="{{route('appointmentPage',$department['id'])}}"
+                                       class="dropdown-item">{{$department['name']}}</a>
+                                @endforeach
 
 
+                            </div>
                         </div>
+
+                        <a href="/donation" class="nav-item nav-link ">Donation</a>
+                        <a href="/product" class="nav-item nav-link">Products</a>
+                        @auth
+                            @can('User')
+                                <a class="nav-item nav-link" href="/userprofile/{{$user['id']}}">
+                                    <img class="img-fluid" style="width: 30px;margin-right: 8px"
+                                         src="{{asset('img/user.png')}}">
+                                </a>
+                            @endcan
+                            @can('Doctor')
+                                <a class="nav-item nav-link" href="/doctorprofile/{{$user['doctor_id']}}">
+                                    @php
+                                        $doctorImage = \App\Models\doctor::find($user['doctor_id'])->image;
+
+                                    @endphp
+                                    <img class="img-fluid"
+                                         style="width: 40px;margin-right: 8px;border-radius: 50%;height: 40px"
+                                         src="data:image/png;base64,{{$doctorImage}}">
+                                </a>
+                            @endcan
+                            @can('Admin')
+                                <a class="nav-item nav-link" href="/adminprofile/{{$user['id']}}">
+                                    <img class="img-fluid" style="width: 40px;margin-right: 8px;height: 40px"
+                                         src="{{asset('img/user.png')}}">
+                                </a>
+                            @endcan
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <a class="nav-item nav-link mx-2" href="{{route('logout')}}"
+                                   onclick="event.preventDefault();
+                                this.closest('form').submit();">
+                                    <img class="img-fluid" style="width: 30px" src="{{asset('img/logout.png')}}">
+                                </a>
+                            </form>
+                        @endauth
+
+                        @guest
+                            <!-- inser more links here -->
+                            <div class="dropdown">
+                                <a class="nav-item nav-link" type="button" id="dropdownMenuButton1"
+                                   data-bs-toggle="dropdown" aria-expanded="false">
+                                    Login/Register
+                                </a>
+                                <ul class="dropdown-menu main-nav" aria-labelledby="dropdownMenuButton1">
+                                    <li><a href="/login" class="nav-item nav-link">LogIn</a></li>
+                                    <li><a class="nav-item nav-link " href="/register">Register</a></li>
+                                </ul>
+                            </div>
+                        @endguest
                     </div>
-
-                    <a href="/donation" class="nav-item nav-link ">Donation</a>
-                    <a href="/product" class="nav-item nav-link">Products</a>
-                    @auth
-                    <a href="/userprofile/{{$user['id']}}" class="nav-item nav-link">Profile</a>
-                    @endauth
-                    @guest
-                        <!-- inser more links here -->
-                        <div class="dropdown">
-                            <a class="nav-item nav-link" type="button" id="dropdownMenuButton1"
-                               data-bs-toggle="dropdown" aria-expanded="false">
-                                Login/Register
-                            </a>
-                            <ul class="dropdown-menu main-nav" aria-labelledby="dropdownMenuButton1">
-                                <li><a href="/login" class="nav-item nav-link">As User</a></li>
-                                <li><a class="nav-item nav-link " href="/registerDoctor">As Doctor</a></li>
-                            </ul>
-                        </div>
-                    @endguest
                 </div>
-            </div>
-        </nav>
-    </div>
+            </nav>
+        </div>
 </div>
 <!-- Navbar End -->
 
