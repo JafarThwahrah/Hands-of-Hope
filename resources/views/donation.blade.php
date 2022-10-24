@@ -102,6 +102,7 @@
                             <div>
                                 <h2 class="fw-bold">You're making a difference. </h2>
                             </div>
+
                             <form action="/donationForm" method="post" id="submitBtn">
                                 @csrf
 
@@ -111,19 +112,20 @@
                                         <span class="text-danger">{{ $errors->first('emailDon') }}</span>
                                     @endif
 
-                                    <input class="form-control" name="emailDon" type="email"
-                                           placeholder="name@email.com">
+                                    <input class="form-control" name="emailDon" type="email" placeholder="name@email.com">
                                 </div>
                                 <p class="dis fw-bold mb-1">Card details</p>
+                                <span class="text-danger" id="cardNos"></span>
+
                                 @if ($errors->has('cardNo') || $errors->has('expirationDate') || $errors->has('securityCode'))
-                                    <span class="text-danger">{{ $errors->first('cardNo') }}</span> <br>
+                                    <span class="text-danger" id="cardNos">{{ $errors->first('cardNo') }}</span> <br>
                                     <span class="text-danger">{{ $errors->first('expirationDate') }}</span> <br>
                                     <span class="text-danger">{{ $errors->first('securityCode') }}</span>
                                 @endif
                                 <div class="d-flex align-items-center justify-content-between card-atm border rounded">
                                     <div class="fab fa-cc-visa p-2"></div>
 
-                                    <input type="text" name="cardNo" class="form-control"
+                                    <input type="text" name="cardNo" id ="cardNo" class="form-control"
                                            placeholder="Card Details">
                                     <div class="d-flex w-75">
 
@@ -137,38 +139,42 @@
                                 <div class="my-3 cardname">
                                     <p class="dis fw-bold mb-2">Cardholder name</p>
                                     @if ($errors->has('cardholderName'))
-                                        <span class="text-danger">{{ $errors->first('cardholderName') }}</span>
+                                        <span class="text-danger" id="cardholderNames">{{ $errors->first('cardholderName') }}</span>
                                     @endif
-                                    <input class="form-control" name="cardholderName" type="text">
+                                    <span class="text-danger" id="cardholderNames"></span>
+                                    <input class="form-control"id="cardholderName" name="cardholderName" type="text">
                                 </div>
                                 <div class="my-3 address">
-                                    <p class="dis fw-bold mb-3">Billing address</p>
+                                    <p class="dis fw-bold mb-3" >Billing address</p>
+                                    <span class="text-danger"  id="billingAddresss"></span>
                                     @if ($errors->has('billingAddress'))
-                                        <span class="text-danger">{{ $errors->first('billingAddress') }}</span>
+                                        <span class="text-danger"  id="billingAddresss">{{ $errors->first('billingAddress') }}</span>
                                     @endif
-                                    <input class="form-control" name="billingAddress" type="text">
+                                    <input class="form-control"id="billingAddress" name="billingAddress" type="text">
                                 </div>
                                 <div class="my-3 address">
-
+                                    <span class="text-danger" id="zips"></span>
                                     @if ($errors->has('zip'))
-                                        <span class="text-danger">{{ $errors->first('zip') }}</span>
+                                        <span class="text-danger" id="zips">{{ $errors->first('zip') }}</span>
                                     @endif
                                     <p class="dis fw-bold mb-3">Zip</p>
-                                    <input class="form-control zip" name="zip" type="text" placeholder="ZIP">
+                                    <input class="form-control zip" name="zip"  id="zip" type="text" placeholder="ZIP">
                                 </div>
 
 
                                 <div class=" my-3">
                                     <p class="dis fw-bold mb-2">Donation Amount</p>
                                     <div class="inputWithcheck">
+                                        <span class="text-danger" id="donationAmounts"></span>
                                         @if ($errors->has('donationAmount'))
-                                            <span class="text-danger">{{ $errors->first('donationAmount') }}</span>
+                                            <span class="text-danger" id="donationAmounts">{{ $errors->first('donationAmount') }}</span>
                                         @endif
                                         <input class="form-control" name="donationAmount" type="text"
-                                               value="0" placeholder="JD">
+                                               value="0" placeholder="JD" id="donationAmount" required>
 
                                     </div>
                                 </div>
+
 
                                 <button class="btn btn-primary " type="submit" onclick="event.preventDefault()
                                     Swal.fire({
@@ -210,7 +216,7 @@
     </script>
 
 
-    {{-- <script src="{{asset('js/test.js')}}"></script> --}}
+    <script src="{{asset('js/validation.js')}}"></script>
 
 
     </html>

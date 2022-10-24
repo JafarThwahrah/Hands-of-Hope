@@ -123,11 +123,11 @@ Route::get('/admin/editAppointment/{id}', [AdminController::class, 'editAppointm
 Route::get('/admin/allDepartments',[AdminController::class,'allDepartments'])->middleware('can:Admin');
 Route::post('/admin/allDepartments',[AdminController::class,'allDepartmentspost']);
 Route::post('/admin/deleteDepartment/{id}',[AdminController::class,'deleteDepartment']);
-Route::get('/admin/editDepartment/{id}',[AdminController::class,'editDepartment']);
+Route::get('/admin/editDepartment/{id}',[AdminController::class,'editDepartment'])->middleware('can:Admin');
 Route::put('/admin/storeEditDepartment/{id}',[AdminController::class,'storeEditDepartment']);
 
 
-Route::get('/admin/allDonations',[AdminController::class,'allDonations']);
+Route::get('/admin/allDonations',[AdminController::class,'allDonations'])->middleware('can:Admin');
 
 
 
@@ -145,6 +145,8 @@ Route::get('/test', function () {
 //Newsletter
 Route::get('/Newsletter' , [UserController::class, 'Newsletter'])->name('Newsletter');
 
+
+//Donation Page
 Route::post('donationForm', [DonationController::class, 'store']);
 Route::get('/donation', [DonationController::class, 'index']);
 
