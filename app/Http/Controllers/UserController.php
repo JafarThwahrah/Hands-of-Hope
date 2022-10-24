@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\doctor;
-use App\Models\appointment;
 use App\Models\Order;
+use App\Models\doctor;
+use App\Models\Newsletter;
+use App\Models\appointment;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -90,6 +91,19 @@ $Password = request('Password');
         return redirect("/userprofile/$id")->with('mssg', 'Thanks for sharing your opinion with us');
         
     }
+
+
+
+    public function Newsletter(Request $request){
+        $request->validate([
+            'Newsletter'=>'required'
+        ]);
+        $Newsletter = new Newsletter();
+        $Newsletter->Newsletter = request('Newsletter');
+        $Newsletter->save();
+        return redirect("/Newsletter");
+    }
+
 
 
 

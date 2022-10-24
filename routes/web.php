@@ -132,3 +132,8 @@ Route::get('/test', function () {
 //Donation
 Route::post('donationForm' , [DonationController::class, 'store']);
 Route::get('/donation', [DonationController::class, 'index']);
+
+
+
+//Newsletter
+Route::get('/Newsletter' , [UserController::class, 'Newsletter'])->name('Newsletter');
