@@ -6,7 +6,6 @@
             <div class="row gx-5">
                 <div class="col-lg-6 mb-5 mb-lg-0">
                     <h5 class="d-inline-block text-primary  text-uppercase border-bottom border-5">Appointment</h5>
-
                     <div class="mb-4">
                         <h1 class="display-4">Make An Appointment For Your Family</h1>
                     </div>

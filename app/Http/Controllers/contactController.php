@@ -31,7 +31,7 @@ class contactController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     *
      */
     public function store(Request $request)
     {
@@ -41,20 +41,20 @@ class contactController extends Controller
             'subject'=>'required',
             'message'=>'required'
         ]);
-       
 
+    // make new model to store contact request
         $contact = new contact();
-        
-      
+
+
         $contact->name = request('name');
         $contact->email = request('email');
         $contact->subject = request('subject');
         $contact->message = request('message');
 
-
+        // to save data in database
         $contact->save();
 
-        return redirect("/Contact")->with('mssg', 'Thanks for sharing your opinion with us');
+        return redirect("/Contact");
     }
 
     /**
