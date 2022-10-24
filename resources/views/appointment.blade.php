@@ -68,7 +68,6 @@
                             </div>
                             <div class="col-12 mt-3">
                                 <button class="btn btn-primary w-100 py-3" type="submit" onclick="event.preventDefault()
-                                    // Swal.fire('Your appointment has been booked successfully')
                                     Swal.fire({
                                           position: 'top-center',
                                           icon: 'success',
