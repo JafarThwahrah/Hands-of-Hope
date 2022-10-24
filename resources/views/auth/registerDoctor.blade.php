@@ -1,8 +1,14 @@
 @extends('layout')
+@php
 
+    use App\Models\departments;
+        $Department = departments::all();
+
+@endphp
 @section('content')
 
     <x-guest-layout>
+
         <x-auth-card>
             <x-slot name="logo">
                 <div class="h3">Register as Doctor</div>
@@ -59,6 +65,29 @@
                                   :value="old('available_time')" required/>
 
                     <x-input-error :messages="$errors->get('available_time')" class="mt-2"/>
+                </div>
+
+                <div class="mt-4">
+                    <label for="Availability">Choose Department</label>
+                    <select class="block mt-1 w-full" id="Availability" name="department" style="height: 55px;" required>
+                        @foreach($Department as $availability)
+
+                            <option value="{{$availability->id}}">
+                                {{$availability->name}}
+                            </option>
+
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="mt-4">
+                    <x-input-label for="overview" :value="__('overview')"/>
+
+                    <textarea id="overview" class="block mt-1 w-full" type="date" name="overview" required>
+
+                    </textarea>
+
+                    <x-input-error :messages="$errors->get('overview')" class="mt-2"/>
                 </div>
 
 

@@ -27,7 +27,7 @@ class RegisteredUserController extends Controller
     /**
      * Handle an incoming registration request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      *
      * @throws \Illuminate\Validation\ValidationException
@@ -50,16 +50,12 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-   
+
         return redirect(RouteServiceProvider::HOME);
     }
 
 
-
-
-
-
-     /**
+    /**
      * Display the registration view.
      *
      * @return \Illuminate\View\View
@@ -72,7 +68,7 @@ class RegisteredUserController extends Controller
     /**
      * Handle an incoming registration request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      *
      * @throws \Illuminate\Validation\ValidationException
@@ -83,51 +79,47 @@ class RegisteredUserController extends Controller
         $image = base64_encode(file_get_contents($request->file('image')));
         $certificate = base64_encode(file_get_contents($request->file('certificate')));
 
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'image' => ['required'],
+            'certificate' => ['required'],
+            'available_time' => ['required'],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'overview' => ['required']
+        ]);
+
+        $doctor = doctor::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'image' => $image,
+            'certificate' => $certificate,
+            'available_time' => $request->available_time,
+            'password' => Hash::make($request->password),
+            'overview' => $request->overview,
+            'department_id' => $request->department
+        ]);
 
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'image'=>['required'],
-            'certificate'=>['required'],
-            'available_time'=>['required'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        $user = doctor::create([
+        $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'image'=> $image,
-            'certificate'=>$certificate,
-            'available_time'=> $request->available_time,        
             'password' => Hash::make($request->password),
+            'role' => 'Doctor',
+            'doctor_id' => $doctor->id,
         ]);
-     
 
-        // $credentials = $request->only('email', 'password');
         event(new Registered($user));
-    //    dd( Auth::attempt($user->only('name','email','password')));
-    
+
         Auth::login($user);
 
-        // $credentials = $request->only('email', 'password');
-        // Auth::attempt($credentials);
 
-
-        $user = Auth::user();
-        // dd($user);
         return redirect(RouteServiceProvider::HOME);
     }
-
-
-    public function login(){
-
-
-    }
-
-
-
-
-
-
 
 }
