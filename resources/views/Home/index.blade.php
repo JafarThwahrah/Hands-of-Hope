@@ -13,7 +13,8 @@
                         <div class="pt-2">
                             {{-- <a href="" class="btn btn-light rounded-pill py-md-3 px-md-5 mx-2">Find Doctor</a> --}}
                             <a href=""
-                               class="btn btn-outline-info rounded-pill py-md-3 px-md-5 mx-2" style="background-color:turquoise; color:white;">Appointment</a>
+                               class="btn btn-outline-info rounded-pill py-md-3 px-md-5 mx-2"
+                               style="background-color:turquoise; color:white;">Appointment</a>
                         </div>
                     </div>
                 </div>
@@ -115,10 +116,11 @@
                                 </div>
                             </div>
                         </div>
-                        @endforeach
                     </div>
+                @endforeach
             </div>
         </div>
+    </div>
     </div>
     <!-- Team End -->
 
@@ -137,25 +139,25 @@
                     <div class="owl-carousel testimonial-carousel">
 
 
-
                         @foreach($testimonials as $testimonial)
-                        <div class="testimonial-item text-center">
-                            <div class="position-relative mb-5">
-                                <img class="img-fluid rounded-circle mx-auto" style="visibility
+                            <div class="testimonial-item text-center">
+                                <div class="position-relative mb-5">
+                                    <img class="img-fluid rounded-circle mx-auto" style="visibility
                                 : hidden" src="img/testimonial-2.jpg" alt="">
 
-                                <div class="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white rounded-circle"
-                                    style="width: 60px; height: 60px;">
-                                    <i class="fa fa-quote-left fa-2x text-primary"></i>
+                                    <div
+                                        class="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white rounded-circle"
+                                        style="width: 60px; height: 60px;">
+                                        <i class="fa fa-quote-left fa-2x text-primary"></i>
+                                    </div>
                                 </div>
+                                <p class="fs-4 fw-normal">{{$testimonial['message']}}</p>
+                                <hr class="w-25 mx-auto">
+                                <h3>{{$testimonial['name']}}</h3>
+                                <h6 class="fw-normal text-primary mb-3">{{$testimonial['subject']}}</h6>
                             </div>
-                            <p class="fs-4 fw-normal">{{$testimonial['message']}}</p>
-                            <hr class="w-25 mx-auto">
-                            <h3>{{$testimonial['name']}}</h3>
-                            <h6 class="fw-normal text-primary mb-3">{{$testimonial['subject']}}</h6>
-                        </div>
 
-@endforeach
+                        @endforeach
 
 
                         {{-- <div class="testimonial-item text-center">
@@ -194,21 +196,5 @@
         </div>
     </div>
     <!-- Testimonial End -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 @endsection
