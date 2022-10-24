@@ -63,19 +63,21 @@
             </div>
             <div class="owl-carousel price-carousel position-relative" style="padding: 0 45px 45px 45px;">
                 @foreach ($products as $product)
-                    <div class="bg-light rounded text-center m-3">
-                        <div class="position-relative">
-                            <img class="img-fluid rounded-top"
-                                 src="data:image/jpg;charset=utf8;base64,{{$product['image']}}" alt="0000000">
+                    @if($product->quantity>0)
+                        <div class="bg-light rounded text-center m-3">
+                            <div class="position-relative">
+                                <img class="img-fluid rounded-top"
+                                     src="data:image/jpg;charset=utf8;base64,{{$product['image']}}" alt="0000000">
 
+                            </div>
+                            <div class="text-center py-5 m-5">
+                                <h3>{{$product['name']}}</h3>
+                                <p>{{$product['description']}}</p>
+                                <a href="order/{{$product['id']}}" class="btn btn-primary rounded-pill py-3 px-5 my-2">Apply
+                                    Now</a>
+                            </div>
                         </div>
-                        <div class="text-center py-5 m-5">
-                            <h3>{{$product['name']}}</h3>
-                            <p>{{$product['description']}}</p>
-                            <a href="order/{{$product['id']}}" class="btn btn-primary rounded-pill py-3 px-5 my-2">Apply
-                                Now</a>
-                        </div>
-                    </div>
+                    @endif
                 @endforeach
             </div>
         </div>

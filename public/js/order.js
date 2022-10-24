@@ -1,11 +1,6 @@
 
-    console.log('tesssssssssst  out ');
-
-
 function addOrder() {
 
-
-    console.log('tesssssssssst');
 let names=document.getElementById("inputName").value;
 let inputId=document.getElementById("inputId").value;
 let inputAddress=document.getElementById("inputAddress").value;

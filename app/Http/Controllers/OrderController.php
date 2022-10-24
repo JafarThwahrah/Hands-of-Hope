@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,7 +21,7 @@ class OrderController extends Controller
 
     public function indexO($id)
     {
-       return view('order',["id"=>$id]);
+        return view('order', ["id" => $id]);
     }
 
 
@@ -31,29 +32,31 @@ class OrderController extends Controller
      */
     public function create()
     {
-        
+
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     *
      */
-    public function store($names,$inputId,$inputCity,$inputPhone,$inputAddress,$product_id)
+    public function store($names, $inputId, $inputCity, $inputPhone, $inputAddress, $product_id)
     {
-        $order=new Order();
-         $user=Auth::user();
-        $order->user_id=1;//$user->id
-        $order->national=$inputId;
-        $order->product_id=$product_id;
-        $order->phone=$inputPhone;
-        $order->address=$inputAddress;
-        $order->city=$inputCity;
-$order->save();
+        $order = new Order();
+        $user = Auth::user();
+        $order->user_id = 1;//$user->id
+        $order->national = $inputId;
+        $order->product_id = $product_id;
+        $order->phone = $inputPhone;
+        $order->address = $inputAddress;
+        $order->city = $inputCity;
+        $order->save();
 
-// dd($names);
-return response()->json($names);
+        $product=product::find($product_id);
+        $product->quantity = $product->quantity-1;
+        $product->save();
+        return response()->json($names);
 
 
     }
@@ -61,7 +64,7 @@ return response()->json($names);
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -72,7 +75,7 @@ return response()->json($names);
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -83,8 +86,8 @@ return response()->json($names);
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -95,7 +98,7 @@ return response()->json($names);
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

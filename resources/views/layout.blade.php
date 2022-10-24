@@ -189,9 +189,9 @@
                                     ">Subscribe
                         </button>
                     </div>
-{{--                    @if($errors->any('Newsletter'))--}}
-{{--                        <span class="text-danger">{{$errors->first('Newsletter')}}</span>--}}
-{{--                    @endif--}}
+                    {{--                    @if($errors->any('Newsletter'))--}}
+                    {{--                        <span class="text-danger">{{$errors->first('Newsletter')}}</span>--}}
+                    {{--                    @endif--}}
                 </form>
             </div>
         </div>
