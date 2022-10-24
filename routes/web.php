@@ -140,6 +140,11 @@ Route::get('/test', function () {
 });
 
 
-//Donation
+
+
+//Newsletter
+Route::get('/Newsletter' , [UserController::class, 'Newsletter'])->name('Newsletter');
+
 Route::post('donationForm', [DonationController::class, 'store']);
 Route::get('/donation', [DonationController::class, 'index']);
+
