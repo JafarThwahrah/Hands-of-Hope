@@ -49,27 +49,13 @@ In our project The user will do all these functionalities :
     Users can be able to give a feedback and testimonial.
 
 
-​ Our great TEAM :
-
-
-    1-Jafar althwahrah
-    
-    2-emad Alhashash
-    
-    3-mohammed abd Alaziz
-    
-    4-khalid Alkarmy
-    
-    5-waad Awajneh
-    
-    6-ibrahim Taqieddin
-    
-    7-Dana Alomari
-
 
 Our LINKS :
-1-
+1-Organization link: https://github.com/HOPE7-Project
 
-2-https://github.com/HOPE7-Project/Hope7
 
-3-https://trello.com/b/uCrUMNUg/hope7-board
+2-Trello board: https://trello.com/b/uCrUMNUg/hope7-board
+
+
+[Wireframe and Mockup.pdf](https://github.com/JafarThwahrah/Hands-of-Hope/files/9854854/Wireframe.and.Mockup.pdf)
+
