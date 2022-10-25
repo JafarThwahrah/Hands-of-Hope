@@ -11,7 +11,7 @@ body {
 }
 
 .profile-nav, .profile-info{
-    margin-top:30px;   
+    margin-top:30px;
 }
 
 .profile-nav .user-heading {
@@ -38,13 +38,13 @@ body {
 }
 
 .profile-nav .user-heading h1 {
-    font-size: 22px;
-    font-weight: 300;
+    /*font-size: 22px;*/
+    /*font-weight: 300;*/
     margin-bottom: 5px;
 }
 
 .profile-nav .user-heading p {
-    font-size: 12px;
+    /*font-size: 12px;*/
 }
 
 .profile-nav ul {
@@ -80,23 +80,23 @@ body {
 }
 
 .profile-nav ul > li > a > i{
-    font-size: 16px;
+    /*font-size: 16px;*/
     padding-right: 10px;
     color: #bcb3aa;
 }
 
 .r-activity {
     margin: 6px 0 0;
-    font-size: 12px;
+    /*font-size: 12px;*/
 }
 
 
 .p-text-area, .p-text-area:focus {
     border: none;
-    font-weight: 300;
+    /*font-weight: 300;*/
     box-shadow: none;
     color: #c3c3c3;
-    font-size: 16px;
+    /*font-size: 16px;*/
 }
 
 .profile-info .panel-footer {
@@ -116,8 +116,8 @@ body {
     padding: 40px 110px;
     -webkit-border-radius: 4px 4px 0 0;
     border-radius: 4px 4px 0 0;
-    font-size: 16px;
-    font-weight: 300;
+    /*font-size: 16px;*/
+    /*font-weight: 300;*/
 }
 
 .bio-graph-info {
@@ -125,7 +125,7 @@ body {
 }
 
 .bio-graph-info h1 {
-    font-size: 22px;
+    /*font-size: 22px;*/
     font-weight: 300;
     margin: 0 0 20px;
 }
@@ -155,7 +155,7 @@ body {
 }
 
 .bio-desk h4 {
-    font-size: 15px;
+    /*font-size: 15px;*/
     font-weight:400;
 }
 
@@ -217,7 +217,7 @@ ul.summary-list > li {
 
 ul.summary-list > li > a > i {
     display:block;
-    font-size: 18px;
+    /*font-size: 18px;*/
     padding-bottom: 5px;
 }
 
@@ -263,7 +263,7 @@ ul.summary-list > li:last-child  {
     background: #eee;
     text-align: center;
     color: #fff;
-    font-size: 16px;
+    /*font-size: 16px;*/
 }
 
 .activity.terques span {
@@ -297,12 +297,12 @@ ul.summary-list > li:last-child  {
 
 .activity h4 {
     margin-top:0 ;
-    font-size: 16px;
+    /*font-size: 16px;*/
 }
 
 .activity p {
     margin-bottom: 0;
-    font-size: 13px;
+    /*font-size: 13px;*/
 }
 
 .activity .activity-desk i, .activity.alt .activity-desk i {
@@ -374,3 +374,4 @@ ul.summary-list > li:last-child  {
 .activity-desk .album a:last-child{
     margin-right: 0px;
 }
+
